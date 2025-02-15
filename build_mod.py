@@ -2,58 +2,84 @@ import pathlib, subprocess, os, shutil, tomllib, zipfile
 from pathlib import Path
 import build_n64recomp_tools as bnt
 
-USING_ASSETS_ARCHIVE = True
-
-project_root = pathlib.Path(__file__).parent
-
-# mod_data = tomllib.loads(project_root.joinpath("mod.toml").read_text())
-# mod_manifest_data = mod_data["manifest"]
-# # print(mod_data)
-# build_dir = project_root.joinpath(f"build")
-# build_nrm_file = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
-
-# runtime_mods_dir = project_root.joinpath("runtime/mods")
-# runtime_nrm_file = runtime_mods_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
-
-assets_archive_path = project_root.joinpath("assets_archive.zip")
-assets_extract_path = project_root.joinpath("assets_extracted/assets")
-
-def build_elf(makefile_path: Path):
-    make_run = subprocess.run(
-        [
-            bnt.deps["make"],
-            "-f",
-            str(makefile_path)
-        ],
-        cwd=pathlib.Path(__file__).parent
-    )
-    if make_run.returncode != 0:
-        raise RuntimeError("Make failed to build mod binaries.")
-
-def build_mod_toml(toml_path: Path):
-    RecompModTool_run = subprocess.run(
-        [
-            bnt.get_RecompModTool_path(),
-            str(toml_path),
-            "build"
-        ],
-        cwd=pathlib.Path(__file__).parent
-    )
-    if RecompModTool_run.returncode != 0:
-        raise RuntimeError("RecompModTool failed to build mod.")
-
+class ModBuilder:
     
-def run_build():          
-    if not bnt.build_dir.exists():
-        print("N64Recomp tools not built. Building now...")
-        bnt.rebuild_tools();
+    project_root: Path
+    makefiles_run: set[Path]
+    
+    
+    def __init__(self, project_root: Path):
+        self.project_root = project_root
+        self.makefiles_run: set[Path] = set()
+        
+    
+    def build_elf(self, makefile_path: Path):
+        make_run = subprocess.run(
+            [
+                bnt.deps["make"],
+                "-f",
+                str(makefile_path)
+            ],
+            cwd=self.project_root
+        )
+        if make_run.returncode != 0:
+            raise RuntimeError("Make failed to build mod binaries.")
 
-    build_elf(Path("./Makefile_ctype"))
-    build_mod_toml(Path("./tomls/mm/ctype.toml"))
 
-    # Copying files for debugging:
-    # os.makedirs(runtime_mods_dir, exist_ok=True)
-    # shutil.copy(build_nrm_file, runtime_nrm_file)
+    def run_RecompModTool(self, toml_path: Path):
+        RecompModTool_run = subprocess.run(
+            [
+                bnt.get_RecompModTool_path(),
+                str(toml_path),
+                "build"
+            ],
+            cwd=self.project_root
+        )
+        if RecompModTool_run.returncode != 0:
+            raise RuntimeError("RecompModTool failed to build mod.")
+
+
+    def build_toml(self, toml_path: Path):
+        if isinstance(toml_path, str):
+            toml_path = Path(toml_path)
+            
+        mod_data = tomllib.loads(toml_path.read_text())
+        build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile_build_dir']).resolve()
+        build_nrm_file = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
+
+        makefile_path = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile']).resolve()
+        if makefile_path in self.makefiles_run:
+            print(f"'{makefile_path.name}' was already built.")
+        else:
+            self.build_elf(makefile_path)
+            self.makefiles_run.add(makefile_path)
+            
+        self.run_RecompModTool(toml_path)
+        
+    def run_build(self, tomls: list[Path]):          
+        if not bnt.build_dir.exists():
+            print("N64Recomp tools not built. Building now...")
+            bnt.rebuild_tools();
+        
+        for i in tomls:
+            self.build_toml(i)
+        
+            
+    def run_build_directory(self, root: list[Path]):
+        tomls_found = []
+              
+        for dirpath, dirnames, filenames in os.walk(root):
+            directory = Path(dirpath)
+            for filename in filenames:
+                file = directory.joinpath(filename)
+                if file.suffix == ".toml":
+                    print(f"Found mod toml at '{file}'...")
+                tomls_found.append(file)
+        
+        self.run_build(tomls_found)
+                
 
 if __name__ == '__main__':
-    run_build()
+    proot = Path(__file__).parent
+    builder = ModBuilder(proot)
+    builder.run_build_directory(proot.joinpath("./tomls"))

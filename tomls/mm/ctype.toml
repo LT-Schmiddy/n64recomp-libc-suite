@@ -60,3 +60,7 @@ data_reference_syms_files = [ "../../Zelda64RecompSyms/mm.us.rev1.datasyms.toml"
 
 # Additional files to include in the mod.
 additional_files = [ ]
+
+[N64Recomp_libc]
+Makefile = "../../Makefile_ctype"
+Makefile_build_dir = "../../build/ctype"
