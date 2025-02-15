@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int isgraph(int c)
+RECOMP_CTYPE_DEFINITION int rc_isgraph(int c)
 {
 	return (unsigned)c - 0x21 < 0x5e;
 }

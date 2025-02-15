@@ -2,9 +2,9 @@
 
 #include <ctype.h>
 
-int tolower(int c)
+RECOMP_CTYPE_DEFINITION int rc_tolower(int c)
 {
-	if(isupper(c))
+	if(rc_isupper(c))
 	{
 		return c | 32;
 	}

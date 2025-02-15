@@ -2,9 +2,9 @@
 
 #include <ctype.h>
 
-int toupper(int c)
+RECOMP_CTYPE_DEFINITION int rc_toupper(int c)
 {
-	if(islower(c))
+	if(rc_islower(c))
 	{
 		return c & 0x5f;
 	}

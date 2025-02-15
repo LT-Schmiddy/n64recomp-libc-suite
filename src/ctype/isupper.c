@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int isupper(int c)
+RECOMP_CTYPE_DEFINITION int rc_isupper(int c)
 {
 	return (unsigned)c - 'A' < 26;
 }

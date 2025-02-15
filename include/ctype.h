@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include <recomp_libc.h>
+
 #define _CTYPE_A 0x00000100L /* Alpha */
 #define _CTYPE_C 0x00000200L /* Control */
 #define _CTYPE_D 0x00000400L /* Digit */
@@ -41,7 +43,7 @@ extern "C" {
  * @param ch The character to classify
  * @return Non-zero value if the character is an alphanumeric character, 0 otherwise.
  * */
-int isalnum(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isalnum(int ch));
 
 /**
  * @brief Checks if the given character is an alphabetic character.
@@ -55,7 +57,7 @@ int isalnum(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is an alphabetic character, zero otherwise.
  * */
-int isalpha(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isalpha(int ch));
 
 /**
  * @brief Checks if a given character is  a 7-bit US-ASCII character.
@@ -69,7 +71,7 @@ int isalpha(int ch);
  * @param ch The character to classify
  * @return Non-zero value if ch is a 7-bit US-ASCII character code, zero otherwise.
  * */
-int isascii(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isascii(int ch));
 
 /**
  * @brief Checks if the given character is a blank character.
@@ -85,7 +87,7 @@ int isascii(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is a blank character, zero otherwise.
  * */
-int isblank(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isblank(int ch));
 
 /**
  * @brief Checks if the given character is a control character.
@@ -100,7 +102,7 @@ int isblank(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is a control character, zero otherwise.
  * */
-int iscntrl(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_iscntrl(int ch));
 
 /**
  * @brief Checks if the given character is a numeric character.
@@ -113,7 +115,7 @@ int iscntrl(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is a numeric character, zero otherwise.
  * */
-int isdigit(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isdigit(int ch));
 
 /**
  * @brief Checks if the given character has a graphical representation.
@@ -131,7 +133,7 @@ int isdigit(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character has a graphical representation character, zero otherwise.
  * */
-int isgraph(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isgraph(int ch));
 
 /**
  * @brief Checks if the given character is classified as a lowercase character.
@@ -147,7 +149,7 @@ int isgraph(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is a lowercase letter, zero otherwise.
  * */
-int islower(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_islower(int ch));
 
 /**
  * @brief Checks if the given character can be printed.
@@ -166,7 +168,7 @@ int islower(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character can be printed, zero otherwise.
  * */
-int isprint(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isprint(int ch));
 
 /**
  * @brief Checks if the given character is a punctuation character.
@@ -181,7 +183,7 @@ int isprint(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is a punctuation character, zero otherwise.
  * */
-int ispunct(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_ispunct(int ch));
 
 /**
  * @brief Checks if the given character is a whitespace character.
@@ -201,7 +203,7 @@ int ispunct(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is a whitespace character, zero otherwise.
  * */
-int isspace(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isspace(int ch));
 
 /**
  * @brief Checks if the given character is an uppercase character
@@ -217,7 +219,7 @@ int isspace(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is an uppercase letter, zero otherwise.
  * */
-int isupper(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isupper(int ch));
 
 /**
  * @brief Checks if the given character is a hexadecimal numeric character.
@@ -230,7 +232,7 @@ int isupper(int ch);
  * @param ch The character to classify
  * @return Non-zero value if the character is an hexadecimal numeric character, zero otherwise.
  * */
-int isxdigit(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_isxdigit(int ch));
 
 /**
  * @brief Converts the given character to lowercase.
@@ -247,7 +249,7 @@ int isxdigit(int ch);
  * @return Lowercase version of ch or unmodified ch if no lowercase version is listed in the default
  * locale.
  * */
-int tolower(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_tolower(int ch));
 
 /**
  * @brief Converts the given character to lowercase.
@@ -264,7 +266,7 @@ int tolower(int ch);
  * @return Uppercase version of ch or unmodified ch if no uppercase version is listed in the default
  * locale.
  * */
-int toupper(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_toupper(int ch));
 
 /**
  * @brief Converts the given character to ASCII.
@@ -276,7 +278,7 @@ int toupper(int ch);
  * @return The value returned is that of the converted letter, or ch if the conversion was not
  * possible.
  * */
-int toascii(int ch);
+RECOMP_CTYPE_DECLARATION(int rc_toascii(int ch));
 
 #ifdef __cplusplus
 }

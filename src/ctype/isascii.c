@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int isascii(int c)
+RECOMP_CTYPE_DEFINITION int rc_isascii(int c)
 {
 	return !(c & ~0x7f);
 }

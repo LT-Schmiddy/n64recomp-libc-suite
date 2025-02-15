@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int isblank(int c)
+RECOMP_CTYPE_DEFINITION int rc_isblank(int c)
 {
 	return (c == ' ' || c == '\t');
 }

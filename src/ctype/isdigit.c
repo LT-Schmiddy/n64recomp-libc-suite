@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int isdigit(int c)
+RECOMP_CTYPE_DEFINITION int rc_isdigit(int c)
 {
 	return (unsigned)c - '0' < 10;
 }

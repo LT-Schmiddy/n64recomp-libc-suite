@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int isalnum(int c)
+RECOMP_CTYPE_DEFINITION int rc_isalnum(int c)
 {
-	return isalpha(c) || isdigit(c);
+	return rc_isalpha(c) || rc_isdigit(c);
 }

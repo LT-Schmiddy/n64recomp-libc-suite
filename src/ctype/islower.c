@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int islower(int c)
+RECOMP_CTYPE_DEFINITION int rc_islower(int c)
 {
 	return (unsigned)c - 'a' < 26;
 }

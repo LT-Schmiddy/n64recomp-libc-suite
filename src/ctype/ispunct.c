@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-int ispunct(int c)
+RECOMP_CTYPE_DEFINITION int rc_ispunct(int c)
 {
-	return isgraph(c) && !isalnum(c);
+	return rc_isgraph(c) && !rc_isalnum(c);
 }
