@@ -1,4 +1,5 @@
 import pathlib, subprocess, os, shutil, tomllib, zipfile
+from pathlib import Path
 import build_n64recomp_tools as bnt
 
 USING_ASSETS_ARCHIVE = True
@@ -17,6 +18,18 @@ runtime_nrm_file = runtime_mods_dir.joinpath(f"{mod_data['inputs']['mod_filename
 assets_archive_path = project_root.joinpath("assets_archive.zip")
 assets_extract_path = project_root.joinpath("assets_extracted/assets")
 
+def build_elf(makefile_path: Path):
+    make_run = subprocess.run(
+        [
+            bnt.deps["make"],
+            "-f",
+            str(makefile_path)
+        ],
+        cwd=pathlib.Path(__file__).parent
+    )
+    if make_run.returncode != 0:
+        raise RuntimeError("Make failed to build mod binaries.")
+
 
 def run_build():
     # Unzipping Archive:
@@ -32,14 +45,7 @@ def run_build():
 
     deps = bnt.deps
 
-    make_run = subprocess.run(
-        [
-            deps["make"],
-        ],
-        cwd=pathlib.Path(__file__).parent
-    )
-    if make_run.returncode != 0:
-        raise RuntimeError("Make failed to build mod binaries.")
+
 
     RecompModTool_run = subprocess.run(
         [
