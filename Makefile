@@ -1,4 +1,5 @@
-SUBMODULE := ctype
+SUBMODULE := none
+$(info    SUBMODULE is $(SUBMODULE))
 
 BUILD_DIR := build/$(SUBMODULE)
 

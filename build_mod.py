@@ -5,20 +5,21 @@ import build_n64recomp_tools as bnt
 class ModBuilder:
     
     project_root: Path
-    makefiles_run: set[Path]
+    submodules_built: set[str]
     
     
     def __init__(self, project_root: Path):
         self.project_root = project_root
-        self.makefiles_run: set[Path] = set()
+        self.submodules_built = set()
         
     
-    def build_elf(self, makefile_path: Path):
+    def build_elf(self, submodule: str, makefile_path: Path = None):
         make_run = subprocess.run(
             [
                 bnt.deps["make"],
                 "-f",
-                str(makefile_path)
+                str(makefile_path),
+                f"SUBMODULE={submodule}"
             ],
             cwd=self.project_root
         )
@@ -45,19 +46,21 @@ class ModBuilder:
             
         mod_data = tomllib.loads(toml_path.read_text())
         build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile_build_dir']).resolve()
-        build_nrm_file = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
+        build_nrm_filename = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
 
+        submodule = mod_data['N64Recomp_libc']['submodule']
         makefile_path = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile']).resolve()
-        if makefile_path in self.makefiles_run:
+        
+        if submodule in self.submodules_built:
             print(f"'{makefile_path.name}' was already built.")
         else:
-            self.build_elf(makefile_path)
-            self.makefiles_run.add(makefile_path)
+            self.build_elf(submodule, makefile_path)
+            self.submodules_built.add(submodule)
         
-        out_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['out_dir']).resolve()
-        os.makedirs(out_dir, exist_ok=True)
+        output_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['output_dir']).resolve()
+        os.makedirs(output_dir, exist_ok=True)
         
-        self.run_RecompModTool(toml_path, out_dir)
+        self.run_RecompModTool(toml_path, output_dir)
         
     def run_build(self, tomls: list[Path]):          
         if not bnt.build_dir.exists():
