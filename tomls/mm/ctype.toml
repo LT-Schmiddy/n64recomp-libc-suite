@@ -63,3 +63,4 @@ additional_files = [ ]
 [N64Recomp_libc]
 Makefile = "../../Makefile_ctype"
 Makefile_build_dir = "../../build/ctype"
+out_dir = "../../out/mm/ctype"

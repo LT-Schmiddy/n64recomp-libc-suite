@@ -1,0 +1,12 @@
+{
+    "authors" : [
+        "LT_Schmiddy"
+    ],
+    "description" : "An Implementation of LibC for N64Recomp, ported from https://github.com/embeddedartistry/libc.<br/>\n<br/>\nThis package targets Majora's Mask\n",
+    "display_name" : "Recomp LibC: CType (MM)",
+    "game_id" : "mm",
+    "id" : "recomp_libc_ctype",
+    "minimum_recomp_version" : "1.2.0",
+    "short_description" : "An Implementation of LibC: CType for N64Recomp.",
+    "version" : "1.0.0"
+}

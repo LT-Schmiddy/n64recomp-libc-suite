@@ -26,12 +26,12 @@ class ModBuilder:
             raise RuntimeError("Make failed to build mod binaries.")
 
 
-    def run_RecompModTool(self, toml_path: Path):
+    def run_RecompModTool(self, toml_path: Path, out_path: Path):
         RecompModTool_run = subprocess.run(
             [
                 bnt.get_RecompModTool_path(),
                 str(toml_path),
-                "build"
+                str(out_path)
             ],
             cwd=self.project_root
         )
@@ -53,8 +53,11 @@ class ModBuilder:
         else:
             self.build_elf(makefile_path)
             self.makefiles_run.add(makefile_path)
-            
-        self.run_RecompModTool(toml_path)
+        
+        out_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['out_dir']).resolve()
+        os.makedirs(out_dir, exist_ok=True)
+        
+        self.run_RecompModTool(toml_path, out_dir)
         
     def run_build(self, tomls: list[Path]):          
         if not bnt.build_dir.exists():
