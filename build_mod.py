@@ -45,7 +45,7 @@ class ModBuilder:
             toml_path = Path(toml_path)
             
         mod_data = tomllib.loads(toml_path.read_text())
-        build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile_build_dir']).resolve()
+        build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['build_dir']).resolve()
         build_nrm_filename = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
 
         submodule = mod_data['N64Recomp_libc']['submodule']
