@@ -45,19 +45,34 @@ class ModBuilder:
             toml_path = Path(toml_path)
             
         mod_data = tomllib.loads(toml_path.read_text())
-        build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['build_dir']).resolve()
+        submodule = mod_data['N64Recomp_libc']['submodule']
+        
+        # Handling Defaults:
+        if "Makefile" in mod_data['N64Recomp_libc']:
+            makefile_path = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile']).resolve()
+        else:
+            makefile_path = self.project_root.joinpath("Makefile")
+            
+        if "build_dir" in mod_data['N64Recomp_libc']:
+            build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['build_dir']).resolve()
+        else:
+            build_dir = self.project_root.joinpath(f"build/{submodule}")
+        
+        if "output_dir" in mod_data['N64Recomp_libc']:
+            output_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['output_dir']).resolve()
+        else:
+            output_dir = self.project_root.joinpath(f"out/{mod_data['manifest']['game_id']}/{submodule}")
+
+
         build_nrm_filename = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
 
-        submodule = mod_data['N64Recomp_libc']['submodule']
-        makefile_path = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile']).resolve()
-        
         if submodule in self.submodules_built:
             print(f"'{makefile_path.name}' was already built.")
         else:
             self.build_elf(submodule, makefile_path)
             self.submodules_built.add(submodule)
         
-        output_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['output_dir']).resolve()
+        
         os.makedirs(output_dir, exist_ok=True)
         
         self.run_RecompModTool(toml_path, output_dir)
