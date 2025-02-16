@@ -3,12 +3,11 @@
         {
             "name": "Mod",
             "includePath": [
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/include/dummy_headers",
-                "${workspaceFolder}/mm-decomp/include",
-                "${workspaceFolder}/mm-decomp/src",
-                "${workspaceFolder}/assets_extracted",
-                "${workspaceFolder}/assets_extracted/assets",
+                "${workspaceFolder}/include/libc",
+                "${workspaceFolder}/include/recomp",
+                "${workspaceFolder}/include/recomp/dummy_headers",
+                // "${workspaceFolder}/mm-decomp/include",
+                // "${workspaceFolder}/mm-decomp/src",
                 "${workspaceFolder}/mm-decomp/extracted/n64-us"
             ],
             "defines": [

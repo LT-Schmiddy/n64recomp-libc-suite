@@ -13,7 +13,7 @@ CFLAGS   := -target mips -mips2 -mabi=32 -O2 -G0 -mno-abicalls -mno-odd-spreg -m
 			-Wall -Wextra -Wno-incompatible-library-redeclaration -Wno-unused-parameter -Wno-unknown-pragmas -Wno-unused-variable \
 			-Wno-missing-braces -Wno-unsupported-floating-point-opt -Werror=section
 CPPFLAGS := -nostdinc -D_LANGUAGE_C -DMIPS -DF3DEX_GBI_2 -DF3DEX_GBI_PL -DGBI_DOWHILE -DRECOMP_IS_BUILDING_$(SUBMODULE) \
-			-I include -I include/dummy_headers 
+			-I include/recomp -I include/recomp/dummy_headers -I include/libc
 LDFLAGS  := -nostdlib -T $(LDSCRIPT) -Map $(BUILD_DIR)/mod.map --unresolved-symbols=ignore-all --emit-relocs -e 0 --no-nmagic -L lib -lgcc_vr4300
 
 C_SRCS := $(wildcard src/$(SUBMODULE)/*.c)
