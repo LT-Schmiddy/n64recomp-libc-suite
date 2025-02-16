@@ -1,7 +1,7 @@
 import textwrap, pathlib, json, os
 from pathlib import Path
 
-TOML_DIR_NAME = "tomls"
+TOML_DIR_NAME = "generated_tomls"
 SUBMODULE_CONFIG_NAME = "submodules.json"
 RECOMP_LIBC_PREFIX = "recomp_libc_"
 
@@ -46,7 +46,7 @@ class SubmoduleGenerator:
         version = "{version}"
 
         # The name that will show up for this mod in the mod menu. This should be human readable.
-        display_name = "Recomp LibC: {submodule_id} ({game_id})"
+        display_name = "Recomp LibC: {submodule_id.capitalize()} ({game_id.upper()})"
 
         # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
         description =  \"\"\"An Implementation of LibC for N64Recomp, ported from https://github.com/embeddedartistry/libc.<br/>
@@ -56,7 +56,7 @@ class SubmoduleGenerator:
 
         # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
         # to prevent it from being cut off due to the limited space.
-        short_description = "An Implementation of LibC: {submodule_id} for N64Recomp."
+        short_description = "An Implementation of LibC: {submodule_id.capitalize()} for N64Recomp."
 
         # Authors of this mod.
         authors = [ "LT_Schmiddy" ]
@@ -68,11 +68,9 @@ class SubmoduleGenerator:
         minimum_recomp_version = "1.2.0"
 
         # Dependency mods. Each entry is the mod's ID and then an optional minimum version of the dependency mod.
-        dependencies = [
         # Example dependency:
-        #    "modname:1.0.0"
-            {dependencies_str}
-        ]
+        # "modname:1.0.0"
+        dependencies = [{dependencies_str}        ]
 
         # Native libraries (e.g. DLLs) and the functions they export.
         native_libraries = [
@@ -101,9 +99,9 @@ class SubmoduleGenerator:
         """)
     
     def get_dependency_str(self, deps: list[str], version: str):
-        retVal = ""
+        retVal = "\n"
         for i in deps:
-            retVal += f"\"{RECOMP_LIBC_PREFIX}{i}:{version}\","
+            retVal += f"            \"{RECOMP_LIBC_PREFIX}{i}:{version}\",\n"
         return retVal
     
     def write_config_toml(self, submodule_id: str, version: str, game_id: str, dependencies: list[str]) -> Path:
