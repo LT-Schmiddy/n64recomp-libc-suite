@@ -2,6 +2,7 @@
 #define __MOD_GLOBALS__
 
 #include <modding.h>
+#include <stddef.h>
 
 RECOMP_IMPORT("*", int recomp_printf(const char* fmt, ...));
 RECOMP_IMPORT("*", void* recomp_alloc(size_t size));

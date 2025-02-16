@@ -33,19 +33,17 @@
 // #include <stdbool.h>
 // #include <stdint.h>
 
+#include <recomp_globals.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <modding.h>
 #include <printf.h>
 
-RECOMP_IMPORT("*", int recomp_printf(const char* fmt, ...));
-RECOMP_IMPORT("*", void* recomp_alloc(size_t size));
-RECOMP_IMPORT("*", void recomp_free(void* ptr));
 
-#define malloc recomp_alloc
-#define free recomp_free
+// #define malloc recomp_alloc
+// #define free recomp_free
 
-void _putchar(char character) {
+static void _putchar(char character) {
   recomp_printf("%c", character);
 }
 
@@ -873,7 +871,7 @@ static int _vsnprintf(out_fct_type out, char* buffer, const size_t maxlen, const
 
 ///////////////////////////////////////////////////////////////////////////////
 
-int printf_(const char* format, ...)
+RECOMP_PRINTF_DEFINITION int rc_printf(const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -884,7 +882,7 @@ int printf_(const char* format, ...)
 }
 
 
-int sprintf_(char* buffer, const char* format, ...)
+RECOMP_PRINTF_DEFINITION int rc_sprintf(char* buffer, const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -894,7 +892,7 @@ int sprintf_(char* buffer, const char* format, ...)
 }
 
 
-int snprintf_(char* buffer, size_t count, const char* format, ...)
+RECOMP_PRINTF_DEFINITION int rc_snprintf(char* buffer, size_t count, const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -904,20 +902,20 @@ int snprintf_(char* buffer, size_t count, const char* format, ...)
 }
 
 
-int vprintf_(const char* format, va_list va)
+RECOMP_PRINTF_DEFINITION int rc_vprintf(const char* format, va_list va)
 {
   char buffer[1];
   return _vsnprintf(_out_char, buffer, (size_t)-1, format, va);
 }
 
 
-int vsnprintf_(char* buffer, size_t count, const char* format, va_list va)
+RECOMP_PRINTF_DEFINITION int rc_vsnprintf(char* buffer, size_t count, const char* format, va_list va)
 {
   return _vsnprintf(_out_buffer, buffer, count, format, va);
 }
 
 
-int fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...)
+RECOMP_PRINTF_DEFINITION int rc_fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -925,8 +923,4 @@ int fctprintf(void (*out)(char character, void* arg), void* arg, const char* for
   const int ret = _vsnprintf(_out_fct, (char*)(uintptr_t)&out_fct_wrap, (size_t)-1, format, va);
   va_end(va);
   return ret;
-}
-
-RECOMP_CALLBACK("*", recomp_on_init) void setup_table () {
-    printf("HELLO ALEX %s", "How are you?");
 }

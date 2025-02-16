@@ -31,7 +31,7 @@
 
 #ifndef _PRINTF_H_
 #define _PRINTF_H_
-
+#include <recomp_libc.h>
 #include <stdarg.h>
 // #include "libc/stdarg.h"
 #include <stddef.h>
@@ -41,15 +41,6 @@
 extern "C" {
 #endif
 
-
-/**
- * Output a character to a custom device like UART, used by the printf() function
- * This function is declared here only. You have to write your custom implementation somewhere
- * \param character Character to output
- */
-void _putchar(char character);
-
-
 /**
  * Tiny printf implementation
  * You have to implement _putchar if you use printf()
@@ -58,8 +49,8 @@ void _putchar(char character);
  * \param format A string that specifies the format of the output
  * \return The number of characters that are written into the array, not counting the terminating null character
  */
-#define printf printf_
-int printf_(const char* format, ...);
+#define printf rc_printf
+RECOMP_PRINTF_DECLARATION(int rc_printf(const char* format, ...));
 
 
 /**
@@ -69,8 +60,8 @@ int printf_(const char* format, ...);
  * \param format A string that specifies the format of the output
  * \return The number of characters that are WRITTEN into the buffer, not counting the terminating null character
  */
-#define sprintf sprintf_
-int sprintf_(char* buffer, const char* format, ...);
+#define sprintf rc_sprintf
+RECOMP_PRINTF_DECLARATION(int rc_sprintf(char* buffer, const char* format, ...));
 
 
 /**
@@ -82,10 +73,10 @@ int sprintf_(char* buffer, const char* format, ...);
  * \return The number of characters that are WRITTEN into the buffer, not counting the terminating null character
  *         If the formatted string is truncated the buffer size (count) is returned
  */
-#define snprintf  snprintf_
-#define vsnprintf vsnprintf_
-int  snprintf_(char* buffer, size_t count, const char* format, ...);
-int vsnprintf_(char* buffer, size_t count, const char* format, va_list va);
+#define snprintf  rc_snprintf
+#define vsnprintf rc_vsnprintf
+RECOMP_PRINTF_DECLARATION(int  rc_snprintf(char* buffer, size_t count, const char* format, ...));
+RECOMP_PRINTF_DECLARATION(int rc_vsnprintf(char* buffer, size_t count, const char* format, va_list va));
 
 
 /**
@@ -94,8 +85,8 @@ int vsnprintf_(char* buffer, size_t count, const char* format, va_list va);
  * \param va A value identifying a variable arguments list
  * \return The number of characters that are WRITTEN into the buffer, not counting the terminating null character
  */
-#define vprintf vprintf_
-int vprintf_(const char* format, va_list va);
+#define vprintf rc_vprintf
+RECOMP_PRINTF_DECLARATION(int rc_vprintf(const char* format, va_list va));
 
 
 /**
@@ -106,7 +97,7 @@ int vprintf_(const char* format, va_list va);
  * \param format A string that specifies the format of the output
  * \return The number of characters that are sent to the output function, not counting the terminating null character
  */
-int fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...);
+RECOMP_PRINTF_DECLARATION(int rc_fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...));
 
 
 #ifdef __cplusplus
