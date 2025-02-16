@@ -114,12 +114,13 @@ if __name__ == '__main__':
     proot = Path(__file__).parent
     
     # Regenerating TOML Files:
-    subgen = bstg.SubmoduleGenerator(proot, proot.joinpath(bstg.TOML_DIR_NAME))
-    submodule_config = json.loads(proot.joinpath(bstg.SUBMODULE_CONFIG_NAME).read_text())
-    tomls = subgen.generate_from_config_dict(submodule_config)
+    # subgen = bstg.SubmoduleGenerator(proot, proot.joinpath(bstg.TOML_DIR_NAME))
+    # submodule_config = json.loads(proot.joinpath(bstg.SUBMODULE_CONFIG_NAME).read_text())
+    # tomls = subgen.generate_from_config_dict(submodule_config)
     
-    # Building Submodules:
+    # # Building Submodules:
     builder = ModBuilder(proot)
-    builder.run_build(tomls)
+    # builder.run_build(tomls)
+    builder.run_build(["combined.toml"])
     
     print("BUILD COMPLETE!")
