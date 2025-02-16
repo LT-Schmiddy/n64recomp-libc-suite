@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+#include <recomp_libc.h>
 #include <stdint.h>
 
 /// Division type for maximal integer storage
@@ -53,7 +54,7 @@ imaxdiv_t rc_imaxdiv(intmax_t numer, intmax_t denom);
 intmax_t strtoimax(const char* __restrict, char** __restrict, int);
 uintmax_t strtoumax(const char* __restrict, char** __restrict, int);
 
-#include <wctype.h>
+// #include <wctype.h>
 intmax_t wcstoimax(const wchar_t* __restrict, wchar_t** __restrict, int);
 uintmax_t wcstoumax(const wchar_t* __restrict, wchar_t** __restrict, int);
 #endif

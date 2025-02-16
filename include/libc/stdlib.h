@@ -4,7 +4,7 @@
 #include <recomp_libc.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <wctype.h> //TODO: remove need for this? due to wchar_t
+// #include <wctype.h> //TODO: remove need for this? due to wchar_t
 
 #ifdef __cplusplus
 extern "C" {

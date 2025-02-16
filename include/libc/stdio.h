@@ -4,7 +4,7 @@
 #include <printf.h>
 #include <stdarg.h>
 #include <stddef.h>
-#include <wctype.h> //TODO: eliminate need for this header here (refactor types?)
+// #include <wctype.h> //TODO: eliminate need for this header here (refactor types?)
 
 #ifdef __cplusplus
 extern "C" {

@@ -48,6 +48,16 @@
     #define RECOMP_STDLIB_DEFINITION
 #endif
 
+//STRING
+#define RECOMP_LIBC_STRING_MOD_ID "recomp_libc_string"
+#ifdef RECOMP_IS_BUILDING_string
+    #define RECOMP_STRING_DECLARATION(func_dec) func_dec
+    #define RECOMP_STRING_DEFINITION RECOMP_EXPORT
+#else
+    #define RECOMP_STRING_DECLARATION(func_dec) RECOMP_IMPORT(RECOMP_LIBC_STRING_MOD_ID, func_dec);
+    #define RECOMP_STRING_DEFINITION
+#endif
+
 //STRINGS
 #define RECOMP_LIBC_STRINGS_MOD_ID "recomp_libc_strings"
 #ifdef RECOMP_IS_BUILDING_strings
