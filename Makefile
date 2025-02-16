@@ -1,5 +1,5 @@
 SUBMODULE := none
-$(info    SUBMODULE is $(SUBMODULE))
+$(info    Compiling submodule '$(SUBMODULE)'...)
 
 BUILD_DIR := build/$(SUBMODULE)
 

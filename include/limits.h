@@ -2,7 +2,7 @@
 #define LIMITS_H__
 
 // System Specific Limits
-#include <_limits.h>
+#include <_types/_limits.h>
 
 /* Support signed or unsigned plain-char */
 
