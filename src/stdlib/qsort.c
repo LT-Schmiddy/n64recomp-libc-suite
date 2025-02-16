@@ -250,9 +250,9 @@ nevermind:
 
 void
 #ifdef I_AM_QSORT_R
-qsort_r(void *a, size_t n, size_t es, void *thunk, cmp_t *cmp)
+RECOMP_STDLIB_DEFINITION qsort_r(void *a, size_t n, size_t es, void *thunk, cmp_t *cmp)
 #else
-qsort(void *a, size_t n, size_t es, cmp_t *cmp)
+RECOMP_STDLIB_DEFINITION qsort(void *a, size_t n, size_t es, cmp_t *cmp)
 #endif
 {
 	_qsort(a, n, es,

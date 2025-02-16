@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-int atoi(const char* str)
+RECOMP_STDLIB_DEFINITION int atoi(const char* str)
 {
 	bool neg = false;
 	int val = 0;

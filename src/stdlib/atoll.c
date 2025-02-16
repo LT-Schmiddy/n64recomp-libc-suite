@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-long long atoll(const char* str)
+RECOMP_STDLIB_DEFINITION long long atoll(const char* str)
 {
 	long long val = 0;
 	bool neg = false;

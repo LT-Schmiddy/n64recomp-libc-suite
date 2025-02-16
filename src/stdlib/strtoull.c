@@ -41,7 +41,7 @@
  * Assumes that the upper and lower case
  * alphabets and digits are each contiguous.
  */
-unsigned long long strtoull(const char* __restrict nptr, char** __restrict endptr, int base)
+RECOMP_STDLIB_DEFINITION unsigned long long strtoull(const char* __restrict nptr, char** __restrict endptr, int base)
 {
 	const char* s;
 	unsigned long long acc;

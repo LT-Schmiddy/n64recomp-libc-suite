@@ -1,6 +1,7 @@
 #ifndef STDLIB_H_
 #define STDLIB_H_
 
+#include <recomp_libc.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <wctype.h> //TODO: remove need for this? due to wchar_t
@@ -103,7 +104,7 @@ size_t wcstombs(char* __restrict, const wchar_t* __restrict, size_t);
  * 	If the converted value falls out of range of corresponding return type,
  * 	the return value is undefined. If no conversion can be performed, ​0​ is returned.
  * */
-int atoi(const char* str);
+RECOMP_STDLIB_DECLARATION(int atoi(const char* str));
 
 /**
  * @brief Interprets a Long value in a byte string pointed to by str.
@@ -121,7 +122,7 @@ int atoi(const char* str);
  * 	If the converted value falls out of range of corresponding return type,
  * 	the return value is undefined. If no conversion can be performed, ​0​ is returned.
  * */
-long atol(const char* str);
+RECOMP_STDLIB_DECLARATION(long atol(const char* str));
 
 /**
  * @brief Interprets a Long Long value in a byte string pointed to by str.
@@ -139,7 +140,7 @@ long atol(const char* str);
  * 	If the converted value falls out of range of corresponding return type,
  * 	the return value is undefined. If no conversion can be performed, ​0​ is returned.
  * */
-long long atoll(const char* str);
+RECOMP_STDLIB_DECLARATION(long long atoll(const char* str));
 
 /**
  * @brief Interprets a floating-point value in a byte string pointed to by str.
@@ -163,7 +164,7 @@ long long atoll(const char* str);
  * 	If the converted value falls out of range of corresponding return type,
  * 	the return value is undefined. If no conversion can be performed, ​0​.0 is returned.
  * */
-double atof(const char* str);
+RECOMP_STDLIB_DECLARATION(double atof(const char* str));
 
 #pragma mark - str-to-x -
 
@@ -206,7 +207,7 @@ double atof(const char* str);
  * error occurs and HUGE_VAL, HUGE_VALF or HUGE_VALL is returned.
  * If no conversion can be performed, ​0​ is returned.
  * */
-float strtof(const char* __restrict str, char** __restrict str_end);
+RECOMP_STDLIB_DECLARATION(float strtof(const char* __restrict str, char** __restrict str_end));
 
 /**
  * @brief Interprets a floating-point value in a byte string pointed to by str.
@@ -292,7 +293,7 @@ float strtof(const char* __restrict str, char** __restrict str_end);
  *  (setting errno to ERANGE) and LONG_MAX, LONG_MIN, LLONG_MAX or LLONG_MIN is returned.
  *  If no conversion can be performed, ​0​ is returned.
  * */
-long strtol(const char* __restrict str, char** __restrict str_end, int base);
+RECOMP_STDLIB_DECLARATION(long strtol(const char* __restrict str, char** __restrict str_end, int base));
 
 /**
  * @brief Interprets an unsigned long value in a byte string pointed to by str.
@@ -335,7 +336,7 @@ long strtol(const char* __restrict str, char** __restrict str_end, int base);
  *  (setting errno to ERANGE) and LONG_MAX, LONG_MIN, LLONG_MAX or LLONG_MIN is returned.
  *  If no conversion can be performed, ​0​ is returned.
  * */
-unsigned long strtoul(const char* __restrict str, char** __restrict str_end, int base);
+RECOMP_STDLIB_DECLARATION(unsigned long strtoul(const char* __restrict str, char** __restrict str_end, int base));
 
 /**
  * @brief Interprets an long long value in a byte string pointed to by str.
@@ -380,7 +381,7 @@ unsigned long strtoul(const char* __restrict str, char** __restrict str_end, int
  *  (setting errno to ERANGE) and LONG_MAX, LONG_MIN, LLONG_MAX or LLONG_MIN is returned.
  *  If no conversion can be performed, ​0​ is returned.
  * */
-long long strtoll(const char* __restrict str, char** __restrict str_end, int base);
+RECOMP_STDLIB_DECLARATION(long long strtoll(const char* __restrict str, char** __restrict str_end, int base));
 
 /**
  * @brief Interprets an unsigned long long value in a byte string pointed to by str.
@@ -424,7 +425,7 @@ long long strtoll(const char* __restrict str, char** __restrict str_end, int bas
  *  (setting errno to ERANGE) and LONG_MAX, LONG_MIN, LLONG_MAX or LLONG_MIN is returned.
  *  If no conversion can be performed, ​0​ is returned.
  * */
-unsigned long long strtoull(const char* __restrict str, char** __restrict str_end, int base);
+RECOMP_STDLIB_DECLARATION(unsigned long long strtoull(const char* __restrict str, char** __restrict str_end, int base));
 
 // TODO:
 // long double strtold(const char* __restrict, char** __restrict);
@@ -440,7 +441,7 @@ unsigned long long strtoull(const char* __restrict str, char** __restrict str_en
  * @param n integer value
  * @return The absolute value of n (i.e. |n|), if it is representable.
  * */
-int abs(int n);
+RECOMP_STDLIB_DECLARATION(int rc_abs(int n));
 
 /**
  * @brief Computes the absolute value of an long number.
@@ -451,7 +452,7 @@ int abs(int n);
  * @param n long value
  * @return The absolute value of n (i.e. |n|), if it is representable.
  * */
-long labs(long n);
+RECOMP_STDLIB_DECLARATION(long labs(long n));
 
 /**
  * @brief Computes the absolute value of an long long number.
@@ -462,7 +463,7 @@ long labs(long n);
  * @param n long long value
  * @return The absolute value of n (i.e. |n|), if it is representable.
  * */
-long long llabs(long long n);
+RECOMP_STDLIB_DECLARATION(long long llabs(long long n));
 
 /**
  * @brief Computes both the quotient and the remainder of the division of the numerator x by the
@@ -481,31 +482,7 @@ long long llabs(long long n);
  *
  * If either the remainder or the quotient cannot be represented, the behavior is undefined.
  * */
-div_t div(int x, int y);
-
-/**
- * @brief Computes both the quotient and the remainder of the division of the numerator x by the
- * denominator y.
- *
- * Computes both the quotient and the remainder of the division of the numerator x by the
- * denominator y. Computes quotient and remainder simultaneously. The quotient is the algebraic
- * quotient with any fractional part discarded (truncated towards zero). The remainder is such that
- * quot * y + rem == x.
- *
- * Computes the quotient (the result of the expression x/y) and remainder (the result of the
- * expression x%y) simultaneously.
- *
- * @param x integer values
- * @param y integer values
- *
- * @return If both the remainder and the quotient can be represented
- * as objects of the corresponding type (int, long, long long, imaxdiv_t,
- * respectively), returns both as an object of type @see div_t, @see ldiv_t, @see lldiv_t, @see
- * imaxdiv_t.
- *
- * If either the remainder or the quotient cannot be represented, the behavior is undefined.
- * */
-ldiv_t ldiv(long x, long y);
+RECOMP_STDLIB_DECLARATION(div_t div(int x, int y));
 
 /**
  * @brief Computes both the quotient and the remainder of the division of the numerator x by the
@@ -529,11 +506,35 @@ ldiv_t ldiv(long x, long y);
  *
  * If either the remainder or the quotient cannot be represented, the behavior is undefined.
  * */
-lldiv_t lldiv(long long x, long long y);
+RECOMP_STDLIB_DECLARATION(ldiv_t ldiv(long x, long y));
+
+/**
+ * @brief Computes both the quotient and the remainder of the division of the numerator x by the
+ * denominator y.
+ *
+ * Computes both the quotient and the remainder of the division of the numerator x by the
+ * denominator y. Computes quotient and remainder simultaneously. The quotient is the algebraic
+ * quotient with any fractional part discarded (truncated towards zero). The remainder is such that
+ * quot * y + rem == x.
+ *
+ * Computes the quotient (the result of the expression x/y) and remainder (the result of the
+ * expression x%y) simultaneously.
+ *
+ * @param x integer values
+ * @param y integer values
+ *
+ * @return If both the remainder and the quotient can be represented
+ * as objects of the corresponding type (int, long, long long, imaxdiv_t,
+ * respectively), returns both as an object of type @see div_t, @see ldiv_t, @see lldiv_t, @see
+ * imaxdiv_t.
+ *
+ * If either the remainder or the quotient cannot be represented, the behavior is undefined.
+ * */
+RECOMP_STDLIB_DECLARATION(lldiv_t lldiv(long long x, long long y));
 
 #pragma mark - random number generation -
 
-int rand_r(unsigned int* ctx);
+RECOMP_STDLIB_DECLARATION(int rand_r(unsigned int* ctx));
 
 /**
  * @brief Returns a pseudo-random integer value between ​0​ and @see RAND_MAX (0 and @see
@@ -550,7 +551,7 @@ int rand_r(unsigned int* ctx);
  *
  * @return Pseudo-random integer value between ​0​ and RAND_MAX, inclusive.
  * */
-int rand(void);
+RECOMP_STDLIB_DECLARATION(int rand(void));
 
 /**
  * @brief Seeds the pseudo-random number generator used by @see rand with the value seed.
@@ -563,7 +564,7 @@ int rand(void);
  *
  * @param seed the seed value
  * */
-void srand(unsigned seed);
+RECOMP_STDLIB_DECLARATION(void srand(unsigned seed));
 
 #pragma mark - sorting -
 
@@ -591,7 +592,7 @@ void srand(unsigned seed);
  * the global variable errno is set to indicate the error.
  *
  * */
-int heapsort(void* vbase, size_t nmemb, size_t size, int (*compar)(const void*, const void*));
+RECOMP_STDLIB_DECLARATION(int heapsort(void* vbase, size_t nmemb, size_t size, int (*compar)(const void*, const void*)));
 
 /**
  * @brief Sorts the given array pointed to by vbase in ascending order.
@@ -624,8 +625,8 @@ int heapsort(void* vbase, size_t nmemb, size_t size, int (*compar)(const void*, 
  * the global variable errno is set to indicate the error.
  *
  * */
-int heapsort_r(void* vbase, size_t nmemb, size_t size, void* thunk,
-			   int (*compar)(void*, const void*, const void*));
+RECOMP_STDLIB_DECLARATION(int heapsort_r(void* vbase, size_t nmemb, size_t size, void* thunk,
+			   int (*compar)(void*, const void*, const void*)));
 
 /**
  * @brief Finds an element equal to element pointed to by key in an array pointed to by ptr.
@@ -648,8 +649,8 @@ int heapsort_r(void* vbase, size_t nmemb, size_t size, void* thunk,
  * @return Pointer to an element in the array that compares equal to *key, or
  *  null pointer if such element has not been found.
  * */
-void* bsearch(const void* key, const void* ptr, size_t count, size_t size,
-			  int (*comp)(const void*, const void*));
+RECOMP_STDLIB_DECLARATION(void* bsearch(const void* key, const void* ptr, size_t count, size_t size,
+			  int (*comp)(const void*, const void*)));
 
 /**
  * @brief Sorts the given array pointed to by ptr in ascending order.
@@ -673,8 +674,8 @@ void* bsearch(const void* key, const void* ptr, size_t count, size_t size,
  *       int cmp(const void *a, const void *b);
  *  The function must not modify the objects passed to it and must return consistent
  * */
-void qsort_r(void* a, size_t n, size_t es, void* thunk,
-			 int (*cmp)(void*, const void*, const void*));
+RECOMP_STDLIB_DECLARATION(void qsort_r(void* a, size_t n, size_t es, void* thunk,
+			 int (*cmp)(void*, const void*, const void*)));
 
 /**
  * @brief Sorts the given array pointed to by ptr in ascending order.
@@ -694,7 +695,7 @@ void qsort_r(void* a, size_t n, size_t es, void* thunk,
  *       int cmp(const void *a, const void *b);
  *  The function must not modify the objects passed to it and must return consistent
  * */
-void qsort(void* a, size_t n, size_t es, int (*compar)(const void*, const void*));
+RECOMP_STDLIB_DECLARATION(void qsort(void* a, size_t n, size_t es, int (*compar)(const void*, const void*)));
 
 #pragma mark - memory -
 
@@ -711,7 +712,7 @@ void qsort(void* a, size_t n, size_t es, int (*compar)(const void*, const void*)
  * The returned pointer must be deallocated with @see free() or @see realloc().
  * On failure, returns a null pointer.
  * */
-void* malloc(size_t size);
+RECOMP_STDLIB_DECLARATION(void* malloc(size_t size));
 
 /**
  * @brief Deallocates allocated memory space.
@@ -731,7 +732,7 @@ void* malloc(size_t size);
  *
  * @param ptr pointer to the memory to deallocate
  * */
-void free(void* ptr);
+RECOMP_STDLIB_DECLARATION(void free(void* ptr));
 
 /**
  * @brief Allocates memory for an array of given number objects of size
@@ -744,7 +745,7 @@ void free(void* ptr);
  * @param size size of the array
  * @return (None)
  * */
-void* calloc(size_t num, size_t size);
+RECOMP_STDLIB_DECLARATION(void* calloc(size_t num, size_t size));
 
 /**
  * @brief Reallocates the given area of memory.
@@ -769,7 +770,7 @@ void* calloc(size_t num, size_t size);
  * @return pointer to new memory allocation.
  *	If `size` is zero (e.g. `realloc(ptr,0)`) then returns NULL
  * */
-void* realloc(void* ptr, size_t size);
+RECOMP_STDLIB_DECLARATION(void* realloc(void* ptr, size_t size));
 
 /**
  * @brief Reallocates the given area of memory.
@@ -789,7 +790,7 @@ void* realloc(void* ptr, size_t size);
  * @return pointer to new memory allocation.
  *	If `size` is zero (e.g. `realloc(ptr,0)`) then returns NULL
  * */
-void* reallocf(void* ptr, size_t size);
+RECOMP_STDLIB_DECLARATION(void* reallocf(void* ptr, size_t size));
 
 #ifdef _POSIX_MEMALIGN_VISIBLE
 /** Posix Memory Alignment Extension

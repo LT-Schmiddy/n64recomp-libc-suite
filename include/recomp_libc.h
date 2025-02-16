@@ -2,6 +2,10 @@
 #define __RECOMP_LIBC__
 #include <modding.h>
 
+#ifndef ENABLE_UNIMPLEMENTED_LIBC_APIS
+#define DISABLE_UNIMPLEMENTED_LIBC_APIS 
+#endif
+
 // CTYPE:
 #define RECOMP_LIBC_CTYPE_MOD_ID "recomp_libc_ctype"
 #ifdef RECOMP_IS_BUILDING_ctype
