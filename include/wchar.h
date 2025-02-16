@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+#include <recomp_libc.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <wctype.h>

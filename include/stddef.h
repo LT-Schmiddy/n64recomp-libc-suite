@@ -5,7 +5,7 @@
 #include <_types/_size_t.h>
 
 #pragma mark - NULL -
-
+#define LONG_BIT 32
 #ifdef __cplusplus
 /*! Expands to 0L (for C++). Implementation-defined null pointer constant  */
 #define NULL 0L
