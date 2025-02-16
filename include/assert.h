@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include <recomp_libc.h>
+
 #ifdef NDEBUG
 #define assert(x) (void)0
 #else
@@ -15,8 +17,8 @@ extern "C" {
 #define static_assert _Static_assert
 #endif
 
-__attribute__((noreturn)) void __assert_fail(const char* expr, const char* file, unsigned int line,
-											 const char* function);
+RECOMP_ASSERT_DECLARATION(void __assert_fail(const char* expr, const char* file, unsigned int line,
+											 const char* function));
 
 #ifdef __cplusplus
 }

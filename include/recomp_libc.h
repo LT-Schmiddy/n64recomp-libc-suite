@@ -6,6 +6,17 @@
 #define DISABLE_UNIMPLEMENTED_LIBC_APIS 
 #endif
 
+// ASSERT:
+#define RECOMP_LIBC_ASSERT_MOD_ID "recomp_libc_assert"
+#ifdef RECOMP_IS_BUILDING_assert
+    #define RECOMP_ASSERT_DECLARATION(func_dec) func_dec
+    #define RECOMP_ASSERT_DEFINITION RECOMP_EXPORT
+#else
+    #define RECOMP_ASSERT_DECLARATION(func_dec) RECOMP_IMPORT(RECOMP_LIBC_ASSERT_MOD_ID, func_dec);
+    #define RECOMP_ASSERT_DEFINITION
+#endif
+
+
 // CTYPE:
 #define RECOMP_LIBC_CTYPE_MOD_ID "recomp_libc_ctype"
 #ifdef RECOMP_IS_BUILDING_ctype
@@ -37,7 +48,7 @@
     #define RECOMP_STDLIB_DEFINITION
 #endif
 
-//STDLIB
+//STRINGS
 #define RECOMP_LIBC_STRINGS_MOD_ID "recomp_libc_strings"
 #ifdef RECOMP_IS_BUILDING_strings
     #define RECOMP_STRINGS_DECLARATION(func_dec) func_dec
