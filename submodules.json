@@ -11,22 +11,22 @@
             "dependencies": [
                 "assert",
                 "ctype",
-                "strings",
+                "support",
                 "stdlib"
             ]
         },
-        "strings": {},
+        "support": {},
         "stdlib": {
             "dependencies": [
                 "ctype",
-                "strings"
+                "support"
             ]
         },
         "tests": {
             "dependencies": [
                 "ctype",
                 "printf",
-                "strings",
+                "support",
                 "stdlib"
             ]
         }

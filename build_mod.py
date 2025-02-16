@@ -118,7 +118,7 @@ if __name__ == '__main__':
     # submodule_config = json.loads(proot.joinpath(bstg.SUBMODULE_CONFIG_NAME).read_text())
     # tomls = subgen.generate_from_config_dict(submodule_config)
     
-    # # Building Submodules:
+    # Building Submodules:
     builder = ModBuilder(proot)
     # builder.run_build(tomls)
     builder.run_build(["combined.toml"])

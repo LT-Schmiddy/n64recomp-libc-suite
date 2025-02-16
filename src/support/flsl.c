@@ -29,21 +29,21 @@
 
 #include <strings.h>
 
+#if defined(__clang__)
 /*
  * Find Last Set bit
  */
-#if defined(__clang__)
-RECOMP_STRINGS_DEFINITION int fls(int mask)
+RECOMP_SUPPORT_DEFINITION int flsl(long mask)
 {
-#if __has_builtin(__builtin_fls)
-	return __builtin_fls(mask);
-#elif __has_builtin(__builtin_clz)
+#if __has_builtin(__builtin_flsl)
+	return __builtin_flsl(mask);
+#elif __has_builtin(__builtin_clzl)
 	if(mask == 0)
 	{
 		return (0);
 	}
 
-	return ((int)sizeof(mask) << 3) - __builtin_clz((unsigned)mask);
+	return ((int)sizeof(mask) << 3) - __builtin_clzl((unsigned long)mask);
 #else
 	int bit;
 
@@ -54,23 +54,23 @@ RECOMP_STRINGS_DEFINITION int fls(int mask)
 
 	for(bit = 1; mask != 1; bit++)
 	{
-		mask = (unsigned)mask >> 1;
+		mask = (unsigned long)mask >> 1;
 	}
 
 	return (bit);
 #endif
 }
 
-#else // Not clang
+#else // not __clang__
 
-RECOMP_STRINGS_DEFINITION int fls(int mask)
+RECOMP_SUPPORT_DEFINITION int flsl(long mask)
 {
 	if(mask == 0)
 	{
 		return (0);
 	}
 
-	return ((int)sizeof(mask) << 3) - __builtin_clz((unsigned)mask);
+	return ((int)sizeof(mask) << 3) - __builtin_clzl((unsigned long)mask);
 }
 
-#endif // if clang
+#endif // clang

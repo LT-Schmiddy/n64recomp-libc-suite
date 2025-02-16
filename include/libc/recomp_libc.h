@@ -11,14 +11,14 @@
 #define RECOMP_IS_BUILDING_printf
 #define RECOMP_IS_BUILDING_stdlib
 #define RECOMP_IS_BUILDING_string
-#define RECOMP_IS_BUILDING_strings
+#define RECOMP_IS_BUILDING_support
 
 #define RECOMP_LIBC_ASSERT_MOD_ID "recomp_libc_combined"
 #define RECOMP_LIBC_CTYPE_MOD_ID "recomp_libc_combined"
 #define RECOMP_LIBC_PRINTF_MOD_ID "recomp_libc_combined"
 #define RECOMP_LIBC_STDLIB_MOD_ID "recomp_libc_combined"
 #define RECOMP_LIBC_STRING_MOD_ID "recomp_libc_combined"
-#define RECOMP_LIBC_STRINGS_MOD_ID "recomp_libc_combined"
+#define RECOMP_LIBC_SUPPORT_MOD_ID "recomp_libc_combined"
 
 #else
 #define RECOMP_LIBC_ASSERT_MOD_ID "recomp_libc_assert"
@@ -26,7 +26,7 @@
 #define RECOMP_LIBC_PRINTF_MOD_ID "recomp_libc_printf"
 #define RECOMP_LIBC_STDLIB_MOD_ID "recomp_libc_stdlib"
 #define RECOMP_LIBC_STRING_MOD_ID "recomp_libc_string"
-#define RECOMP_LIBC_STRINGS_MOD_ID "recomp_libc_strings"
+#define RECOMP_LIBC_SUPPORT_MOD_ID "recomp_libc_support"
 #endif
 
 
@@ -77,13 +77,13 @@
     #define RECOMP_STRING_DEFINITION
 #endif
 
-//STRINGS
-#ifdef RECOMP_IS_BUILDING_strings
-    #define RECOMP_STRINGS_DECLARATION(func_dec) func_dec
-    #define RECOMP_STRINGS_DEFINITION RECOMP_EXPORT
+//SUPPORT
+#ifdef RECOMP_IS_BUILDING_support
+    #define RECOMP_SUPPORT_DECLARATION(func_dec) func_dec
+    #define RECOMP_SUPPORT_DEFINITION RECOMP_EXPORT
 #else
-    #define RECOMP_STRINGS_DECLARATION(func_dec) RECOMP_IMPORT(RECOMP_LIBC_STRINGS_MOD_ID, func_dec);
-    #define RECOMP_STRINGS_DEFINITION
+    #define RECOMP_SUPPORT_DECLARATION(func_dec) RECOMP_IMPORT(RECOMP_LIBC_SUPPORT_MOD_ID, func_dec);
+    #define RECOMP_SUPPORT_DEFINITION
 #endif
 
 
