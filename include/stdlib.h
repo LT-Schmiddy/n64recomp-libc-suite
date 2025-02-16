@@ -695,12 +695,12 @@ RECOMP_STDLIB_DECLARATION(void rc_qsort_r(void* a, size_t n, size_t es, void* th
  *       int cmp(const void *a, const void *b);
  *  The function must not modify the objects passed to it and must return consistent
  * */
-RECOMP_STDLIB_DECLARATION(void qsort(void* a, size_t n, size_t es, int (*compar)(const void*, const void*)));
+RECOMP_STDLIB_DECLARATION(void rc_qsort(void* a, size_t n, size_t es, int (*compar)(const void*, const void*)));
 
 #pragma mark - memory -
 
 /**
- * @brief Allocates size bytes of uninitialized storage.
+ * @brief Allocates size bytes of uninitialized storage (serves as a wrapper for recomp_alloc).
  *
  * If size is zero, the behavior is implementation defined (null pointer may be returned,
  * or some non-null pointer may be returned that may not be used to access storage, but has to be
@@ -712,10 +712,10 @@ RECOMP_STDLIB_DECLARATION(void qsort(void* a, size_t n, size_t es, int (*compar)
  * The returned pointer must be deallocated with @see free() or @see realloc().
  * On failure, returns a null pointer.
  * */
-RECOMP_STDLIB_DECLARATION(void* malloc(size_t size));
+RECOMP_STDLIB_DECLARATION(void* rc_malloc(size_t size));
 
 /**
- * @brief Deallocates allocated memory space.
+ * @brief Deallocates allocated memory space (serves as a wrapper for recomp_free).
  *
  * Deallocates the space previously allocated by @see malloc, @see calloc, @see realloc.
  * If ptr is a null pointer, the function does nothing.
@@ -732,7 +732,7 @@ RECOMP_STDLIB_DECLARATION(void* malloc(size_t size));
  *
  * @param ptr pointer to the memory to deallocate
  * */
-RECOMP_STDLIB_DECLARATION(void free(void* ptr));
+RECOMP_STDLIB_DECLARATION(void rc_free(void* ptr));
 
 /**
  * @brief Allocates memory for an array of given number objects of size
