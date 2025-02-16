@@ -1,12 +1,12 @@
-import pathlib, subprocess, os, shutil, tomllib, zipfile
+import pathlib, subprocess, os, shutil, tomllib, zipfile, json
 from pathlib import Path
 import build_n64recomp_tools as bnt
+import build_submodule_toml_gen as bstg
 
 class ModBuilder:
     
     project_root: Path
     submodules_built: set[str]
-    
     
     def __init__(self, project_root: Path):
         self.project_root = project_root
@@ -102,5 +102,14 @@ class ModBuilder:
 
 if __name__ == '__main__':
     proot = Path(__file__).parent
+    
+    # Regenerating TOML Files:
+    subgen = bstg.SubmoduleGenerator(proot, proot.joinpath(bstg.TOML_DIR_NAME))
+    submodule_config = json.loads(proot.joinpath(bstg.SUBMODULE_CONFIG_NAME).read_text())
+    tomls = subgen.generate_from_config_dict(submodule_config)
+    
+    # Building Submodules:
     builder = ModBuilder(proot)
-    builder.run_build_directory(proot.joinpath("./tomls"))
+    builder.run_build(tomls)
+    
+    print("BUILD COMPLETE!")

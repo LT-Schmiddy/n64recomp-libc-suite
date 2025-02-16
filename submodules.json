@@ -1,0 +1,17 @@
+{
+    "version":"1.0.0",
+    "all_game_ids": [
+        "mm"
+    ],
+    "submodules": {
+        "ctype": {},
+        "printf": {},
+        "strings": {},
+        "stdlib": {
+            "dependencies": [
+                "ctype",
+                "strings"
+            ]
+        }
+    }
+}
