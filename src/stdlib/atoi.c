@@ -18,7 +18,7 @@ int atoi(const char* str)
 			break; // proceed without action
 	}
 
-	while(isdigit(*str))
+	while(rc_isdigit(*str))
 	{
 		val = (10 * val) + (*str++ - '0');
 	}

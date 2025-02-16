@@ -247,7 +247,7 @@ float strtof(const char* __restrict str, char** __restrict str_end);
  * error occurs and HUGE_VAL, HUGE_VALF or HUGE_VALL is returned.
  * If no conversion can be performed, ​0​ is returned.
  * */
-double strtod(const char* __restrict str, char** __restrict str_end);
+// double strtod(const char* __restrict str, char** __restrict str_end);
 
 /**
  * @brief Interprets an long value in a byte string pointed to by str.
@@ -427,7 +427,7 @@ long long strtoll(const char* __restrict str, char** __restrict str_end, int bas
 unsigned long long strtoull(const char* __restrict str, char** __restrict str_end, int base);
 
 // TODO:
-long double strtold(const char* __restrict, char** __restrict);
+// long double strtold(const char* __restrict, char** __restrict);
 
 #pragma mark - math -
 

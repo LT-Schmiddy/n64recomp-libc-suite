@@ -58,7 +58,7 @@ unsigned long long strtoull(const char* __restrict nptr, char** __restrict endpt
 	do
 	{
 		c = *s++;
-	} while(isspace((unsigned char)c));
+	} while(rc_isspace((unsigned char)c));
 
 	if(c == '-')
 	{

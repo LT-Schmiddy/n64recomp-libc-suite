@@ -7,7 +7,7 @@ long atol(const char* str)
 	long val = 0;
 	bool neg = false;
 
-	while(isspace(*str))
+	while(rc_isspace(*str))
 	{
 		str++;
 	}

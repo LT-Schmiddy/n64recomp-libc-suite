@@ -1,6 +1,7 @@
 #ifndef STRINGS_H_
 #define STRINGS_H_
 
+#include <recomp_libc.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -19,7 +20,7 @@ extern "C" {
  * @param mask The bit mask
  * @return The index of the bit if mask is not zero, 0 otherwise.
  * */
-int fls(int mask);
+RECOMP_STRINGS_DECLARATION(int fls(int mask));
 
 /**
  * @brief Finds the last (most significant) bit set in the given mask
@@ -32,7 +33,7 @@ int fls(int mask);
  * @param mask The bit mask
  * @return The index of the bit if mask is not zero, 0 otherwise.
  * */
-int flsl(long mask);
+RECOMP_STRINGS_DECLARATION(int flsl(long mask));
 
 /**
  * @brief Finds the last (most significant) bit set in the given mask
@@ -45,7 +46,7 @@ int flsl(long mask);
  * @param mask The bit mask
  * @return The index of the bit if mask is not zero, 0 otherwise.
  * */
-int flsll(long long mask);
+RECOMP_STRINGS_DECLARATION(int flsll(long long mask));
 
 #ifdef __cplusplus
 }

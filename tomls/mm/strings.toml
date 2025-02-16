@@ -5,7 +5,7 @@
 
 # Unique ID of this mod. Pick something long enough that it'll never be the same as any other mod.
 # The name displayed in the mod management menu is separate from this so this doesn't need to be human readable.
-id = "recomp_libc_stdlib"
+id = "recomp_libc_strings"
 
 # Version of this mod.
 version = "1.0.0"
@@ -35,8 +35,7 @@ minimum_recomp_version = "1.2.0"
 # Dependency mods. Each entry is the mod's ID and then an optional minimum version of the dependency mod.
 dependencies = [
 # Example dependency:
-   "recomp_libc_ctype:1.0.0",
-   "recomp_libc_strings:1.0.0"
+#    "modname:1.0.0"
 ]
 
 # Native libraries (e.g. DLLs) and the functions they export.
@@ -49,10 +48,10 @@ native_libraries = [
 [inputs]
 
 # Input elf file to generate a mod from.
-elf_path = "../../build/stdlib/mod.elf"
+elf_path = "../../build/strings/mod.elf"
 
 # Output mod filename.
-mod_filename = "mm_recomp_libc_stdlib_1.0.0"
+mod_filename = "mm_recomp_libc_strings_1.0.0"
 
 # Reference symbol files.
 func_reference_syms_file = "../../Zelda64RecompSyms/mm.us.rev1.syms.toml"
@@ -62,4 +61,4 @@ data_reference_syms_files = [ "../../Zelda64RecompSyms/mm.us.rev1.datasyms.toml"
 additional_files = [ ]
 
 [N64Recomp_libc]
-submodule = "stdlib"
+submodule = "strings"

@@ -81,7 +81,7 @@ long long int strtoll(const char* nptr, char** endptr, int base)
 	do
 	{
 		c = (unsigned char)*s++;
-	} while(isspace(c));
+	} while(rc_isspace(c));
 	if(c == '-')
 	{
 		neg = 1;
@@ -138,13 +138,13 @@ long long int strtoll(const char* nptr, char** endptr, int base)
 	}
 	for(acc = 0, any = 0;; c = (unsigned char)*s++)
 	{
-		if(isdigit(c))
+		if(rc_isdigit(c))
 		{
 			c -= '0';
 		}
-		else if(isalpha(c))
+		else if(rc_isalpha(c))
 		{
-			c -= isupper(c) ? 'A' - 10 : 'a' - 10;
+			c -= rc_isupper(c) ? 'A' - 10 : 'a' - 10;
 		}
 		else
 		{

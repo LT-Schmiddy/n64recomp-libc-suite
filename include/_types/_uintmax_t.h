@@ -1,6 +1,6 @@
-#ifndef _INTMAX_T
-#define _INTMAX_T
+#ifndef _UINTMAX_T
+#define _UINTMAX_T
 
-typedef signed long long int intmax_t;
+typedef unsigned long long int uintmax_t;
 
 #endif
