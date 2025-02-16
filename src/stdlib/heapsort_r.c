@@ -165,7 +165,7 @@ RECOMP_STDLIB_DEFINITION int rc_heapsort_r(void* vbase, size_t nmemb, size_t siz
 		return (-1);
 	}
 
-	if((k = malloc(size)) == NULL)
+	if((k = rc_malloc(size)) == NULL)
 	{
 		return (-1);
 	}
@@ -194,7 +194,7 @@ RECOMP_STDLIB_DEFINITION int rc_heapsort_r(void* vbase, size_t nmemb, size_t siz
 		SELECT(i, j, nmemb, t, p, size, k, cnt, tmp1, tmp2);
 	}
 
-	free(k);
+	rc_free(k);
 
 	return (0);
 }

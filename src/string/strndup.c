@@ -50,7 +50,7 @@ char* strndup(const char* str, size_t n)
 		{
 		}
 
-		if((copy = malloc(len + 1)) == NULL)
+		if((copy = rc_malloc(len + 1)) == NULL)
 		{
 			return (NULL);
 		}

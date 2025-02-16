@@ -47,7 +47,7 @@ char* strdup(const char* str)
 	{
 		size_t len = strlen(str) + 1;
 
-		if((copy = malloc(len)) == NULL)
+		if((copy = rc_malloc(len)) == NULL)
 		{
 			return (NULL);
 		}

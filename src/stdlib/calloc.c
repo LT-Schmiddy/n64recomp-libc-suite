@@ -17,7 +17,7 @@ RECOMP_STDLIB_DEFINITION void* rc_calloc(size_t num, size_t size)
 	}
 
 	size_t total_size = num * size;
-	void* ptr = malloc(total_size);
+	void* ptr = rc_malloc(total_size);
 
 	if(ptr)
 	{

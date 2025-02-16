@@ -9,14 +9,14 @@ RECOMP_STDLIB_DEFINITION void* rc_realloc(void* ptr, size_t size)
 	{
 		if(!ptr)
 		{
-			return malloc(size);
+			return rc_malloc(size);
 		}
 
-		new_data = malloc(size);
+		new_data = rc_malloc(size);
 		if(new_data)
 		{
 			memcpy(new_data, ptr, size); // TODO: unsafe copy...
-			free(ptr); // we always move the data. free.
+			rc_free(ptr); // we always move the data. free.
 		}
 	}
 
@@ -29,7 +29,7 @@ RECOMP_STDLIB_DEFINITION void* reallocf(void* ptr, size_t size)
 
 	if((p == NULL) && (ptr != NULL))
 	{
-		free(ptr);
+		rc_free(ptr);
 	}
 
 	return p;
