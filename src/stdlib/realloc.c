@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-RECOMP_STDLIB_DEFINITION void* realloc(void* ptr, size_t size)
+RECOMP_STDLIB_DEFINITION void* rc_realloc(void* ptr, size_t size)
 {
 	void* new_data = NULL;
 
@@ -25,7 +25,7 @@ RECOMP_STDLIB_DEFINITION void* realloc(void* ptr, size_t size)
 
 RECOMP_STDLIB_DEFINITION void* reallocf(void* ptr, size_t size)
 {
-	void* p = realloc(ptr, size);
+	void* p = rc_realloc(ptr, size);
 
 	if((p == NULL) && (ptr != NULL))
 	{

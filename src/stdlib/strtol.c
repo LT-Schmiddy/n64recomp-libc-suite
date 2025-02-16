@@ -21,12 +21,12 @@
  */
 /*      Copyright (c) 1995 NeXT Computer, Inc.  All rights reserved.
  *
- * strol.c - The functions strtol() & strtoul() are exported as public API
+ * strol.c - The functions rc_strtol() & strtoul() are exported as public API
  *           via the header file ~driverkit/generalFuncs.h
  *
  * HISTORY
  * 25-Oct-1995    Dean Reece at NeXT
- *      Created based on BSD4.4's strtol.c & strtoul.c.
+ *      Created based on BSD4.4's rc_strtol.c & strtoul.c.
  *      Removed dependency on _ctype_ by static versions of isupper()...
  *      Added support for "0b101..." binary constants.
  *      Commented out references to errno.
@@ -75,7 +75,7 @@
  * Ignores `locale' stuff.  Assumes that the upper and lower case
  * alphabets and digits are each contiguous.
  */
-RECOMP_STDLIB_DEFINITION long strtol(const char* nptr, char** endptr, int base)
+RECOMP_STDLIB_DEFINITION long rc_strtol(const char* nptr, char** endptr, int base)
 {
 	const char* s = nptr;
 	unsigned long acc;

@@ -28,7 +28,7 @@
 #include <recomp_libc.h>
 
 /* See comments in div.c for implementation details. */
-RECOMP_STDLIB_DEFINITION imaxdiv_t imaxdiv(intmax_t numer, intmax_t denom)
+RECOMP_STDLIB_DEFINITION imaxdiv_t rc_imaxdiv(intmax_t numer, intmax_t denom)
 {
 	imaxdiv_t retval;
 

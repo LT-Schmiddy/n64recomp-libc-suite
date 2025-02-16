@@ -137,9 +137,9 @@ loop:
 	if(depth_limit-- <= 0)
 	{
 #ifdef I_AM_QSORT_R
-		heapsort_r(a, n, es, thunk, cmp);
+		rc_heapsort_r(a, n, es, thunk, cmp);
 #else
-		heapsort(a, n, es, cmp);
+		rc_heapsort(a, n, es, cmp);
 #endif
 		return;
 	}
@@ -250,9 +250,9 @@ nevermind:
 
 void
 #ifdef I_AM_QSORT_R
-RECOMP_STDLIB_DEFINITION qsort_r(void *a, size_t n, size_t es, void *thunk, cmp_t *cmp)
+RECOMP_STDLIB_DEFINITION rc_qsort_r(void *a, size_t n, size_t es, void *thunk, cmp_t *cmp)
 #else
-RECOMP_STDLIB_DEFINITION qsort(void *a, size_t n, size_t es, cmp_t *cmp)
+RECOMP_STDLIB_DEFINITION rc_qsort(void *a, size_t n, size_t es, cmp_t *cmp)
 #endif
 {
 	_qsort(a, n, es,

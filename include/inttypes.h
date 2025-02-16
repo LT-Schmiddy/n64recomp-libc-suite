@@ -23,7 +23,7 @@ typedef struct
  * @param j value
  * @return The absolute value of n (i.e. |n|), if it is representable.
  * */
-intmax_t imaxabs(intmax_t j);
+intmax_t rc_imaxabs(intmax_t j);
 
 /**
  * @brief Computes both the quotient and the remainder of the division of the numerator x by the
@@ -47,7 +47,7 @@ intmax_t imaxabs(intmax_t j);
  *
  * If either the remainder or the quotient cannot be represented, the behavior is undefined.
  * */
-imaxdiv_t imaxdiv(intmax_t numer, intmax_t denom);
+imaxdiv_t rc_imaxdiv(intmax_t numer, intmax_t denom);
 
 #ifndef DISABLE_UNIMPLEMENTED_LIBC_APIS
 intmax_t strtoimax(const char* __restrict, char** __restrict, int);

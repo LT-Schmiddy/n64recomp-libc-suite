@@ -139,7 +139,7 @@
  * a data set that will trigger the worst case is nonexistent.  Heapsort's
  * only advantage over quicksort is that it requires little additional memory.
  */
-RECOMP_STDLIB_DEFINITION int heapsort(void* vbase, size_t nmemb, size_t size, int (*compar)(const void*, const void*))
+RECOMP_STDLIB_DEFINITION int rc_heapsort(void* vbase, size_t nmemb, size_t size, int (*compar)(const void*, const void*))
 {
 	size_t cnt;
 	size_t i;

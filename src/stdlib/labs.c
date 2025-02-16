@@ -29,7 +29,7 @@
 
 #include <stdlib.h>
 
-RECOMP_STDLIB_DEFINITION long labs(long j)
+RECOMP_STDLIB_DEFINITION long rc_labs(long j)
 {
 	return (j < 0 ? -j : j);
 }

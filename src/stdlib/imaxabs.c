@@ -27,7 +27,7 @@
 #include <inttypes.h>
 #include <recomp_libc.h>
 
-RECOMP_STDLIB_DEFINITION intmax_t imaxabs(intmax_t j)
+RECOMP_STDLIB_DEFINITION intmax_t rc_imaxabs(intmax_t j)
 {
 	return (j < 0 ? -j : j);
 }
