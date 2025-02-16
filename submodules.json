@@ -12,6 +12,14 @@
                 "ctype",
                 "strings"
             ]
+        },
+        "tests": {
+            "dependencies": [
+                "ctype",
+                "printf",
+                "strings",
+                "stdlib"
+            ]
         }
     }
 }

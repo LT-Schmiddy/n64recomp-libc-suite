@@ -3,6 +3,10 @@ from pathlib import Path
 import build_n64recomp_tools as bnt
 import build_submodule_toml_gen as bstg
 
+BUILD_DIR_NAME = "build"
+OUT_DIR_NAME = "out"
+RUNTIME_DIR_NAME = "runtime"
+
 class ModBuilder:
     
     project_root: Path
@@ -51,20 +55,22 @@ class ModBuilder:
         if "Makefile" in mod_data['N64Recomp_libc']:
             makefile_path = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['Makefile']).resolve()
         else:
+            # DEFAULT
             makefile_path = self.project_root.joinpath("Makefile")
             
         if "build_dir" in mod_data['N64Recomp_libc']:
             build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['build_dir']).resolve()
         else:
-            build_dir = self.project_root.joinpath(f"build/{submodule}")
+            # DEFAULT
+            build_dir = self.project_root.joinpath(f"{BUILD_DIR_NAME}/{submodule}")
         
         if "output_dir" in mod_data['N64Recomp_libc']:
             output_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['output_dir']).resolve()
         else:
-            output_dir = self.project_root.joinpath(f"out/{mod_data['manifest']['game_id']}/{submodule}")
+            # DEFAULT
+            output_dir = self.project_root.joinpath(f"{OUT_DIR_NAME}/{mod_data['manifest']['game_id']}/{submodule}")
 
-
-        build_nrm_filename = build_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
+        nrm_file = output_dir.joinpath(f"{mod_data['inputs']['mod_filename']}.nrm")
 
         if submodule in self.submodules_built:
             print(f"'{makefile_path.name}' was already built.")
@@ -72,10 +78,14 @@ class ModBuilder:
             self.build_elf(submodule, makefile_path)
             self.submodules_built.add(submodule)
         
-        
         os.makedirs(output_dir, exist_ok=True)
-        
         self.run_RecompModTool(toml_path, output_dir)
+        
+        # Copy to runtime dir:
+        print(f"Copying '{nrm_file.name}' to runtime dir...")
+        runtime_mods_dir = self.project_root.joinpath(RUNTIME_DIR_NAME).joinpath("mods")
+        os.makedirs(runtime_mods_dir, exist_ok=True)
+        shutil.copy(nrm_file, runtime_mods_dir.joinpath(nrm_file.name))
         
     def run_build(self, tomls: list[Path]):          
         if not bnt.build_dir.exists():
