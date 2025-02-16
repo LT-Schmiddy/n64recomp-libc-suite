@@ -1,0 +1,4 @@
+https://github.com/GaloisInc/minlibc
+https://github.com/embeddedartistry/libc
+https://github.com/mpaland/printf
+https://github.com/Decompollaborate/libgcc_vr4300
