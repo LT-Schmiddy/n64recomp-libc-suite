@@ -16,13 +16,26 @@ CPPFLAGS := -nostdinc -D_LANGUAGE_C -DMIPS -DF3DEX_GBI_2 -DF3DEX_GBI_PL -DGBI_DO
 			-I include/recomp -I include/recomp/dummy_headers -I include/libc
 LDFLAGS  := -nostdlib -T $(LDSCRIPT) -Map $(BUILD_DIR)/mod.map --unresolved-symbols=ignore-all --emit-relocs -e 0 --no-nmagic -L lib -lgcc_vr4300
 
-C_SRCS := $(wildcard src/assert/*.c) $(wildcard src/ctype/*.c) $(wildcard src/printf/*.c) $(wildcard src/stdlib/*.c) \
-	$(wildcard src/string/*.c) $(wildcard src/strings/*.c) $(wildcard src/tests/*.c)
+C_SRCS := \
+	$(wildcard src/assert/*.c) \
+	$(wildcard src/ctype/*.c) \
+	$(wildcard src/printf/*.c) \
+	$(wildcard src/stdlib/*.c) \
+	$(wildcard src/string/*.c) \
+	$(wildcard src/strings/*.c) \
+	$(wildcard src/tests/*.c)
+
 C_OBJS := $(addprefix $(BUILD_DIR)/, $(C_SRCS:.c=.o))
 C_DEPS := $(addprefix $(BUILD_DIR)/, $(C_SRCS:.c=.d))
 
-OBJECT_DIRS := $(BUILD_DIR)/src/$(SUBMODULE)/ $(BUILD_DIR)/src/assert $(BUILD_DIR)/src/ctype $(BUILD_DIR)/src/printf \
-	$(BUILD_DIR)/src/stdlib $(BUILD_DIR)/src/string $(BUILD_DIR)/src/printf $(BUILD_DIR)/src/strings \
+OBJECT_DIRS := \
+	$(BUILD_DIR)/src/$(SUBMODULE) \
+	$(BUILD_DIR)/src/assert \
+	$(BUILD_DIR)/src/ctype \
+	$(BUILD_DIR)/src/printf \
+	$(BUILD_DIR)/src/stdlib \
+	$(BUILD_DIR)/src/string \
+	$(BUILD_DIR)/src/strings \
 	$(BUILD_DIR)/src/tests
 
 $(TARGET): $(C_OBJS) $(LDSCRIPT) | $(BUILD_DIR)
