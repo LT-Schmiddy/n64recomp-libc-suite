@@ -6,6 +6,13 @@
     "submodules": {
         "ctype": {},
         "printf": {},
+        "string": { 
+            "dependencies": [
+                "ctype",
+                "strings",
+                "stdlib"
+            ]
+        },
         "strings": {},
         "stdlib": {
             "dependencies": [
@@ -20,7 +27,6 @@
                 "strings",
                 "stdlib"
             ]
-        },
-        "wchar": {}
+        }
     }
 }
