@@ -178,7 +178,7 @@ static inline void _out_fct(char character, void* buffer, size_t idx, size_t max
 }
 
 
-// internal secure strlen
+// internal secure rc_strlen
 // \return The length of the string (excluding the terminating 0) limited by 'maxsize'
 static inline unsigned int _strnlen_s(const char* str, size_t maxsize)
 {

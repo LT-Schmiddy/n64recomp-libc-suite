@@ -1,15 +1,15 @@
 #include <string.h>
 
 /*
- * PJ: my own strncmp implementation
+ * PJ: my own rc_strncmp implementation
  *
- * strncmp with short-circuit support: very common when you have const strings
+ * rc_strncmp with short-circuit support: very common when you have const strings
  * combined by the compiler.
  * Otherwise we compare the strings as normal
  * We bail out when s1 ends (null-term) or n bytes have been analyzed
  */
 
-int strncmp(const char* s1, const char* s2, size_t n)
+int rc_strncmp(const char* s1, const char* s2, size_t n)
 {
 	int r = -1;
 

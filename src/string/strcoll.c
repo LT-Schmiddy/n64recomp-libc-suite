@@ -1,6 +1,6 @@
 #include <string.h>
 
-int strcoll(const char* l, const char* r)
+int rc_strcoll(const char* l, const char* r)
 {
-	return strcmp(l, r);
+	return rc_strcmp(l, r);
 }

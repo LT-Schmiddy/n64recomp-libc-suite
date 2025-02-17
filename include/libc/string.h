@@ -4,7 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif //__cplusplus
-
+#include <recomp_libc.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -26,7 +26,7 @@ extern "C" {
  *         Zero if s1 and s2 compare equal, or if n is zero.
  *         Positive value if s1 appears after s2 in lexicographical order.
  * */
-int memcmp(const void* s1, const void* s2, size_t n);
+int rc_memcmp(const void* s1, const void* s2, size_t n);
 
 /**
  * @brief Copies the value c into each of the first n characters of the object pointed to by dest.
@@ -42,7 +42,7 @@ int memcmp(const void* s1, const void* s2, size_t n);
  * @param n number of bytes to fill
  * @return A copy of dest
  * */
-void* memset(void* dest, int c, size_t n);
+void* rc_memset(void* dest, int c, size_t n);
 
 /**
  * @brief Copies n characters from the object pointed to by src to the object pointed to by dest.
@@ -59,7 +59,7 @@ void* memset(void* dest, int c, size_t n);
  * @param n number of bytes to copy
  * @return a copy of dest
  * */
-void* memcpy(void* __restrict dest, const void* __restrict src, size_t n);
+void* rc_memcpy(void* __restrict dest, const void* __restrict src, size_t n);
 
 /**
  * @brief Copies n characters from the object pointed to by src to the object pointed to by dest.
@@ -75,7 +75,7 @@ void* memcpy(void* __restrict dest, const void* __restrict src, size_t n);
  * @param n number of bytes to copy
  * @return a copy of dest
  * */
-void* memmove(void* dest, const void* src, size_t n);
+void* rc_memmove(void* dest, const void* src, size_t n);
 
 /**
  * @brief Finds the first occurrence of c in the initial n characters of the object pointed to by s
@@ -91,7 +91,7 @@ void* memmove(void* dest, const void* src, size_t n);
  * @param n max number of characters to examine
  * @return a copy of dest
  * */
-void* memchr(const void* s, int c, size_t n);
+void* rc_memchr(const void* s, int c, size_t n);
 
 /**
  * @brief Find substring s in memory area l.
@@ -108,7 +108,7 @@ void* memchr(const void* s, int c, size_t n);
  * @param s_len number of characters to examine
  * @return  a pointer to the beginning of the substring, or NULL if the substring is not found.
  * */
-void* memmem(const void* l, size_t l_len, const void* s, size_t s_len);
+void* rc_memmem(const void* l, size_t l_len, const void* s, size_t s_len);
 
 #pragma mark - string -
 
@@ -124,7 +124,7 @@ void* memmem(const void* l, size_t l_len, const void* s, size_t s_len);
  * @param str pointer to the null-terminated byte string to be examined
  * @return The length of the null-terminated byte string str.
  * */
-size_t strlen(const char* str);
+size_t rc_strlen(const char* str);
 
 /**
  * @brief Returns the length of the given null-terminated byte string.
@@ -141,7 +141,7 @@ size_t strlen(const char* str);
  * @return  The length of the null-terminated byte string str on success, zero if str is a null
  * pointer, maxlen if the null character was not found.
  * */
-size_t strnlen(const char* str, size_t maxlen);
+size_t rc_strnlen(const char* str, size_t maxlen);
 
 /**
  * @brief Copies the null-terminated byte string pointed to by src to the character array whose
@@ -161,7 +161,7 @@ size_t strnlen(const char* str, size_t maxlen);
  * @param src pointer to the null-terminated byte string to copy from
  * @return a copy of dest
  * */
-char* strcpy(char* __restrict dst, const char* __restrict src);
+char* rc_strcpy(char* __restrict dst, const char* __restrict src);
 
 /**
  * @brief  Copies at most maxlen characters of the character array pointed to by src to character
@@ -184,7 +184,7 @@ char* strcpy(char* __restrict dst, const char* __restrict src);
  * @param maxlen maximum number of characters to copy
  * @return a copy of dest
  * */
-char* strncpy(char* __restrict dst, const char* __restrict src, size_t maxlen);
+char* rc_strncpy(char* __restrict dst, const char* __restrict src, size_t maxlen);
 
 /**
  * @brief Finds the first occurrence of the substring  in the string
@@ -201,7 +201,7 @@ char* strncpy(char* __restrict dst, const char* __restrict src, size_t maxlen);
  * @return Pointer to the first character of the found substring in string, or NULL if no such
  * substring is found. If substring points to an empty string, string is returned.
  * */
-char* strstr(const char* string, const char* substring);
+char* rc_strstr(const char* string, const char* substring);
 
 /**
  * @brief Finds the first occurrence of find in the initial slen characters of the object pointed to
@@ -219,7 +219,7 @@ char* strstr(const char* string, const char* substring);
  * @return If find is an empty string, s is returned; if find occurs nowhere in s, NULL is returned;
  *         otherwise a pointer to the first character of the first occurrence of find is returned.
  * */
-char* strnstr(const char* s, const char* find, size_t slen);
+char* rc_strnstr(const char* s, const char* find, size_t slen);
 
 /**
  * @brief Compares two null-terminated byte strings lexicographically.
@@ -234,7 +234,7 @@ char* strnstr(const char* s, const char* find, size_t slen);
  *         Zero if s1 and s2 compare equal, or if n is zero.
  *         Positive value if s1 appears after s2 in lexicographical order.
  * */
-int strcmp(const char* s1, const char* s2);
+int rc_strcmp(const char* s1, const char* s2);
 
 /**
  * @brief Compares at most n characters of two possibly null-terminated arrays.
@@ -252,7 +252,7 @@ int strcmp(const char* s1, const char* s2);
  *         Zero if s1 and s2 compare equal, or if n is zero.
  *         Positive value if s1 appears after s2 in lexicographical order.
  * */
-int strncmp(const char* s1, const char* s2, size_t n);
+int rc_strncmp(const char* s1, const char* s2, size_t n);
 
 /**
  * @brief Duplicate the passed in string str.
@@ -264,7 +264,7 @@ int strncmp(const char* s1, const char* s2, size_t n);
  * @return a pointer to the duplicated string on success. NULL if insufficient memory was available,
  * with errno set to indicate cause of error.
  * */
-char* strdup(const char* str);
+char* rc_strdup(const char* str);
 
 /**
  * @brief Duplicate n bytes of the passed in string str.
@@ -277,7 +277,7 @@ char* strdup(const char* str);
  * @return a pointer to the duplicated string on success. NULL if insufficient memory was available,
  * with errno set to indicate cause of error.
  * */
-char* strndup(const char* str, size_t n);
+char* rc_strndup(const char* str, size_t n);
 
 /**
  * @brief Finds the first occurrence of c in the null-terminated byte string pointed to by s.
@@ -293,7 +293,7 @@ char* strndup(const char* str, size_t n);
  * @param c character to search for
  * @return a pointer to the found character in s, or null pointer if no such character is found.
  * */
-char* strchr(const char* s, int c);
+char* rc_strchr(const char* s, int c);
 
 /**
  * @brief Finds the last occurrence of c in the null-terminated byte string pointed to by s.
@@ -309,7 +309,7 @@ char* strchr(const char* s, int c);
  * @param c character to search for
  * @return a pointer to the found character in s, or null pointer if no such character is found.
  * */
-char* strrchr(const char* s, int c);
+char* rc_strrchr(const char* s, int c);
 
 /**
  * @brief Appends a copy of the null-terminated byte string pointed to
@@ -329,7 +329,7 @@ char* strrchr(const char* s, int c);
  * @param src pointer to the null-terminated byte string to copy from
  * @return a copy of dest
  * */
-char* strcat(char* __restrict dst, const char* __restrict src);
+char* rc_strcat(char* __restrict dst, const char* __restrict src);
 
 /**
  * @brief Appends at most maxlen characters from the character array pointed to by src,
@@ -352,7 +352,7 @@ char* strcat(char* __restrict dst, const char* __restrict src);
  * @param maxlen maximum number of characters to copy
  * @return a copy of dest
  * */
-char* strncat(char* __restrict dst, const char* __restrict src, size_t maxlen);
+char* rc_strncat(char* __restrict dst, const char* __restrict src, size_t maxlen);
 
 /**
  * @brief  Finds the next token in a null-terminated byte string pointed to by s.
@@ -372,16 +372,16 @@ char* strncat(char* __restrict dst, const char* __restrict src, size_t maxlen);
  * @param delim pointer to the null-terminated byte string identifying delimiters
  * @return Returns pointer to the beginning of the next token or NULL if there are no more tokens.
  * */
-char* strtok(char* s, const char* delim);
+char* rc_strtok(char* s, const char* delim);
 
 // TODO: documentation
-size_t strxfrm(char* __restrict, const char* __restrict, size_t);
-size_t strcspn(const char*, const char*);
-size_t strspn(const char*, const char*);
-char* strpbrk(const char*, const char*);
-int strcoll(const char*, const char*);
-char* strerror(int);
-int strerror_r(int, char*, size_t);
+size_t rc_strxfrm(char* __restrict, const char* __restrict, size_t);
+size_t rc_strcspn(const char*, const char*);
+size_t rc_strspn(const char*, const char*);
+char* rc_strpbrk(const char*, const char*);
+int rc_strcoll(const char*, const char*);
+char* rc_strerror(int);
+int rc_strerror_r(int, char*, size_t);
 
 #ifdef __cplusplus
 }

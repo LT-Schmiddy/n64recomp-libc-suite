@@ -4,7 +4,7 @@
 
 extern void* __memrchr(const void*, int, size_t);
 
-char* strrchr(const char* s, int c)
+char* rc_strrchr(const char* s, int c)
 {
-	return __memrchr(s, c, strlen(s) + 1);
+	return __memrchr(s, c, rc_strlen(s) + 1);
 }

@@ -21,7 +21,7 @@ RECOMP_STDLIB_DEFINITION void* rc_calloc(size_t num, size_t size)
 
 	if(ptr)
 	{
-		memset(ptr, 0, total_size);
+		rc_memset(ptr, 0, total_size);
 	}
 
 	return ptr;

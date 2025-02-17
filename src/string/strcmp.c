@@ -9,7 +9,7 @@
  * We bail out when s1 ends (null-term)
  */
 
-int strcmp(const char* s1, const char* s2)
+int rc_strcmp(const char* s1, const char* s2)
 {
 	int r = -1;
 

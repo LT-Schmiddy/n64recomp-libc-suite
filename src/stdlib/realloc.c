@@ -15,7 +15,7 @@ RECOMP_STDLIB_DEFINITION void* rc_realloc(void* ptr, size_t size)
 		new_data = rc_malloc(size);
 		if(new_data)
 		{
-			memcpy(new_data, ptr, size); // TODO: unsafe copy...
+			rc_memcpy(new_data, ptr, size); // TODO: unsafe copy...
 			rc_free(ptr); // we always move the data. free.
 		}
 	}

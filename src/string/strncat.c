@@ -23,10 +23,10 @@
 
 #include <string.h>
 
-char* strncat(char* __restrict dst, const char* __restrict src, size_t maxlen)
+char* rc_strncat(char* __restrict dst, const char* __restrict src, size_t maxlen)
 {
-	const size_t dstlen = strlen(dst);
-	const size_t srclen = strnlen(src, maxlen);
+	const size_t dstlen = rc_strlen(dst);
+	const size_t srclen = rc_strnlen(src, maxlen);
 	//  The strcat() and strncat() functions append a copy of the null-
 	//  terminated string src to the end of the null-terminated string dst,
 	//  then add a terminating '\0'.  The string dst must have sufficient
@@ -35,7 +35,7 @@ char* strncat(char* __restrict dst, const char* __restrict src, size_t maxlen)
 	//  The strncat() function appends not more than maxlen characters
 	//  from src, and then adds a terminating '\0'.
 	const size_t cpylen = srclen < maxlen ? srclen : maxlen;
-	memcpy(dst + dstlen, src, cpylen);
+	rc_memcpy(dst + dstlen, src, cpylen);
 	dst[dstlen + cpylen] = '\0';
 	//  The strcat() and strncat() functions return dst.
 	return dst;

@@ -1,10 +1,10 @@
-// MUSL memset implementation:
-// https://github.com/esmil/musl/blob/master/src/string/memset.c
+// MUSL rc_memset implementation:
+// https://github.com/esmil/musl/blob/master/src/string/rc_memset.c
 
 #include <stdint.h>
 #include <string.h>
 
-void* __attribute__((weak)) memset(void* dest, int c, size_t n)
+void* __attribute__((weak)) rc_memset(void* dest, int c, size_t n)
 {
 	unsigned char* s = dest;
 	size_t k;

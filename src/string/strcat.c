@@ -23,15 +23,15 @@
 
 #include <string.h>
 
-char* strcat(char* __restrict dst, const char* __restrict src)
+char* rc_strcat(char* __restrict dst, const char* __restrict src)
 {
-	const size_t dstlen = strlen(dst);
-	const size_t srclen = strlen(src);
+	const size_t dstlen = rc_strlen(dst);
+	const size_t srclen = rc_strlen(src);
 	//  The strcat() and strncat() functions append a copy of the null-
 	//  terminated string src to the end of the null-terminated string dst,
 	//  then add a terminating '\0'.  The string dst must have sufficient
 	//  space to hold the result.
-	memcpy(dst + dstlen, src, srclen + 1);
+	rc_memcpy(dst + dstlen, src, srclen + 1);
 	//  The strcat() and strncat() functions return dst.
 	return dst;
 }

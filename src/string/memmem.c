@@ -31,7 +31,7 @@
 /*
  * Find the first occurrence of the byte string s in byte string l.
  */
-void* memmem(const void* l, size_t l_len, const void* s, size_t s_len)
+void* rc_memmem(const void* l, size_t l_len, const void* s, size_t s_len)
 {
 	const char* cur;
 	const char* last;
@@ -53,7 +53,7 @@ void* memmem(const void* l, size_t l_len, const void* s, size_t s_len)
 	/* special case where s_len == 1 */
 	if(s_len == 1)
 	{
-		return memchr(l, (int)*cs, l_len);
+		return rc_memchr(l, (int)*cs, l_len);
 	}
 
 	/* the last position where its possible to find "s" in "l" */
@@ -61,7 +61,7 @@ void* memmem(const void* l, size_t l_len, const void* s, size_t s_len)
 
 	for(cur = cl; cur <= last; cur++)
 	{
-		if(cur[0] == cs[0] && memcmp(cur, cs, s_len) == 0)
+		if(cur[0] == cs[0] && rc_memcmp(cur, cs, s_len) == 0)
 		{
 			return (void*)(uintptr_t)cur;
 		}

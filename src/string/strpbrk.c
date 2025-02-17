@@ -1,7 +1,7 @@
 #include <string.h>
 
-char* strpbrk(const char* s, const char* b)
+char* rc_strpbrk(const char* s, const char* b)
 {
-	s += strcspn(s, b);
+	s += rc_strcspn(s, b);
 	return *s ? (char*)(uintptr_t)s : 0;
 }

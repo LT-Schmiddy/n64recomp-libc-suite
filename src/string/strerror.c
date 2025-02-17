@@ -16,7 +16,7 @@ static const char errmsg[] =
 
 static const char* invalid_err = "No error information available.";
 
-char* strerror(int err_no)
+char* rc_strerror(int err_no)
 {
 	const char* s = NULL;
 	int i;

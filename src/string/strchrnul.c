@@ -18,7 +18,7 @@ char* __strchrnul(const char* s, int c)
 
 	if(!c)
 	{
-		return (char*)(uintptr_t)s + strlen(s);
+		return (char*)(uintptr_t)s + rc_strlen(s);
 	}
 
 	for(; (uintptr_t)s % ALIGN; s++)

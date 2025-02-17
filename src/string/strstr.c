@@ -35,7 +35,7 @@
 
 #include <string.h>
 
-char* strstr(const char* string, const char* substring)
+char* rc_strstr(const char* string, const char* substring)
 {
 	const char* a;
 	const char* b;

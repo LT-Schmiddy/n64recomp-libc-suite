@@ -100,7 +100,7 @@ cont:
 	/* NOTREACHED */
 }
 
-char* strtok(char* s, const char* delim)
+char* rc_strtok(char* s, const char* delim)
 {
 	static char* last;
 

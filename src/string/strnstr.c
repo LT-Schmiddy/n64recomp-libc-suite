@@ -45,13 +45,13 @@ __FBSDID("$FreeBSD: src/lib/libc/string/strnstr.c,v 1.5 2009/02/03 17:58:20 dang
  * Find the first occurrence of find in s, where the search is limited to the
  * first slen characters of s.
  */
-char* strnstr(const char* s, const char* find, size_t slen)
+char* rc_strnstr(const char* s, const char* find, size_t slen)
 {
 	char c;
 
 	if((c = *find++) != '\0')
 	{
-		size_t len = strlen(find);
+		size_t len = rc_strlen(find);
 		do
 		{
 			char sc;
@@ -66,7 +66,7 @@ char* strnstr(const char* s, const char* find, size_t slen)
 			{
 				return (NULL);
 			}
-		} while(strncmp(s, find, len) != 0);
+		} while(rc_strncmp(s, find, len) != 0);
 		s--;
 	}
 	return ((char*)(uintptr_t)s);
