@@ -12,7 +12,7 @@ static const unsigned char errid[] = {
 #define E(a, b) b "\0"
 static const char errmsg[] =
 #include "__strerror.h"
-	;
+;
 
 static const char* invalid_err = "No error information available.";
 

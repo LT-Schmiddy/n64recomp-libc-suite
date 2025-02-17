@@ -9,7 +9,7 @@
  * We bail out when s1 ends (null-term) or n bytes have been analyzed
  */
 
-int rc_strncmp(const char* s1, const char* s2, size_t n)
+ RECOMP_STRING_DEFINITION int rc_strncmp(const char* s1, const char* s2, size_t n)
 {
 	int r = -1;
 

@@ -1,6 +1,6 @@
 #include <string.h>
 
-int rc_memcmp(const void* p1, const void* p2, size_t n)
+RECOMP_STRING_DEFINITION int rc_memcmp(const void* p1, const void* p2, size_t n)
 {
 	size_t i;
 

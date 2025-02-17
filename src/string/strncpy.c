@@ -23,7 +23,7 @@
 
 #include <string.h>
 
-char* rc_strncpy(char* __restrict dst, const char* __restrict src, size_t maxlen)
+RECOMP_STRING_DEFINITION char* rc_strncpy(char* __restrict dst, const char* __restrict src, size_t maxlen)
 {
 	const size_t srclen = rc_strnlen(src, maxlen);
 	if(srclen < maxlen)

@@ -31,7 +31,7 @@
 /*
  * Find the first occurrence of the byte string s in byte string l.
  */
-void* rc_memmem(const void* l, size_t l_len, const void* s, size_t s_len)
+RECOMP_STRING_DEFINITION void* rc_memmem(const void* l, size_t l_len, const void* s, size_t s_len)
 {
 	const char* cur;
 	const char* last;

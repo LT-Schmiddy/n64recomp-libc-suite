@@ -74,7 +74,7 @@ static const unsigned long mask80 = 0x8080808080808080;
 			return ((uintptr_t)p - (uintptr_t)str + x); \
 	} while(0)
 
-size_t rc_strlen(const char* str)
+RECOMP_STRING_DEFINITION size_t rc_strlen(const char* str)
 {
 	const char* p;
 	const unsigned long* lp;
