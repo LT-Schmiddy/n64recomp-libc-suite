@@ -45,7 +45,7 @@ __FBSDID("$FreeBSD: src/lib/libc/string/strnstr.c,v 1.5 2009/02/03 17:58:20 dang
  * Find the first occurrence of find in s, where the search is limited to the
  * first slen characters of s.
  */
-RECOMP_STRING_DEFINITION char* rc_strnstr(const char* s, const char* find, size_t slen)
+RECOMP_CORE_DEFINITION char* rc_strnstr(const char* s, const char* find, size_t slen)
 {
 	char c;
 

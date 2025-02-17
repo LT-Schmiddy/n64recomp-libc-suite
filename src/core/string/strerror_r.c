@@ -2,7 +2,7 @@
 #include <errno.h>
 #include <string.h>
 
-RECOMP_STRING_DEFINITION int rc_strerror_r(int err_no, char* buffer, size_t buffer_size)
+RECOMP_CORE_DEFINITION int rc_strerror_r(int err_no, char* buffer, size_t buffer_size)
 {
 	int r = 0;
 	char* err_msg = rc_strerror(err_no);

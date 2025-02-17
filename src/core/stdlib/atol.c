@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-RECOMP_STDLIB_DEFINITION long rc_atol(const char* str)
+RECOMP_CORE_DEFINITION long rc_atol(const char* str)
 {
 	long val = 0;
 	bool neg = false;

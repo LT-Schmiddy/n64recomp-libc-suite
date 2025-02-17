@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-RECOMP_CTYPE_DEFINITION int rc_isxdigit(int c)
+RECOMP_CORE_DEFINITION int rc_isxdigit(int c)
 {
 	return rc_isdigit(c) || ((unsigned)c | 32) - 'a' < 6;
 }

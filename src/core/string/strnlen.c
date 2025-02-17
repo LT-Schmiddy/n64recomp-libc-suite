@@ -18,7 +18,7 @@
 
 #include <string.h>
 
-RECOMP_STRING_DEFINITION size_t rc_strnlen(const char* str, size_t maxlen)
+RECOMP_CORE_DEFINITION size_t rc_strnlen(const char* str, size_t maxlen)
 {
 	const char* cp;
 

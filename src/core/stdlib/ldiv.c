@@ -32,7 +32,7 @@
 
 #include <stdlib.h> /* ldiv_t */
 
-RECOMP_STDLIB_DEFINITION ldiv_t rc_ldiv(long num, long denom)
+RECOMP_CORE_DEFINITION ldiv_t rc_ldiv(long num, long denom)
 {
 	ldiv_t r;
 

@@ -82,12 +82,12 @@ int __attribute__((weak)) rand_r(unsigned int* ctx)
 	return (r);
 }
 
-RECOMP_STDLIB_DEFINITION int __attribute__((weak)) rc_rand(void)
+RECOMP_CORE_DEFINITION int __attribute__((weak)) rc_rand(void)
 {
 	return (do_rand(&next));
 }
 
-RECOMP_STDLIB_DEFINITION void __attribute__((weak)) rc_srand(unsigned seed)
+RECOMP_CORE_DEFINITION void __attribute__((weak)) rc_srand(unsigned seed)
 {
 	next = seed;
 }

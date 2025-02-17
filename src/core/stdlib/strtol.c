@@ -75,7 +75,7 @@
  * Ignores `locale' stuff.  Assumes that the upper and lower case
  * alphabets and digits are each contiguous.
  */
-RECOMP_STDLIB_DEFINITION long rc_strtol(const char* nptr, char** endptr, int base)
+RECOMP_CORE_DEFINITION long rc_strtol(const char* nptr, char** endptr, int base)
 {
 	const char* s = nptr;
 	unsigned long acc;

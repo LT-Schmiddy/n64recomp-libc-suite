@@ -32,7 +32,7 @@
 
 #include <stdlib.h> /* div_t */
 
-RECOMP_STDLIB_DEFINITION div_t rc_div(int num, int denom)
+RECOMP_CORE_DEFINITION div_t rc_div(int num, int denom)
 {
 	div_t r;
 

@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-RECOMP_CTYPE_DEFINITION int rc_toupper(int c)
+RECOMP_CORE_DEFINITION int rc_toupper(int c)
 {
 	if(rc_islower(c))
 	{

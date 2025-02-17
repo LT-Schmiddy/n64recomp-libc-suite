@@ -3,7 +3,8 @@ from pathlib import Path
 import build_n64recomp_tools as bnt
 import build_mod as bm
 
-package_dir = bm.project_root.joinpath("thunderstore_package")
+project_root = Path(__file__).parent
+package_dir = project_root.joinpath("thunderstore_package")
 
 deps = bnt.deps = bnt.deps
 def get_git_url() -> str:

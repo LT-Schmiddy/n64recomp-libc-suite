@@ -871,7 +871,7 @@ static int _vsnprintf(out_fct_type out, char* buffer, const size_t maxlen, const
 
 ///////////////////////////////////////////////////////////////////////////////
 
-RECOMP_PRINTF_DEFINITION int rc_printf(const char* format, ...)
+RECOMP_CORE_DEFINITION int rc_printf(const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -882,7 +882,7 @@ RECOMP_PRINTF_DEFINITION int rc_printf(const char* format, ...)
 }
 
 
-RECOMP_PRINTF_DEFINITION int rc_sprintf(char* buffer, const char* format, ...)
+RECOMP_CORE_DEFINITION int rc_sprintf(char* buffer, const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -892,7 +892,7 @@ RECOMP_PRINTF_DEFINITION int rc_sprintf(char* buffer, const char* format, ...)
 }
 
 
-RECOMP_PRINTF_DEFINITION int rc_snprintf(char* buffer, size_t count, const char* format, ...)
+RECOMP_CORE_DEFINITION int rc_snprintf(char* buffer, size_t count, const char* format, ...)
 {
   va_list va;
   va_start(va, format);
@@ -902,20 +902,20 @@ RECOMP_PRINTF_DEFINITION int rc_snprintf(char* buffer, size_t count, const char*
 }
 
 
-RECOMP_PRINTF_DEFINITION int rc_vprintf(const char* format, va_list va)
+RECOMP_CORE_DEFINITION int rc_vprintf(const char* format, va_list va)
 {
   char buffer[1];
   return _vsnprintf(_out_char, buffer, (size_t)-1, format, va);
 }
 
 
-RECOMP_PRINTF_DEFINITION int rc_vsnprintf(char* buffer, size_t count, const char* format, va_list va)
+RECOMP_CORE_DEFINITION int rc_vsnprintf(char* buffer, size_t count, const char* format, va_list va)
 {
   return _vsnprintf(_out_buffer, buffer, count, format, va);
 }
 
 
-RECOMP_PRINTF_DEFINITION int rc_fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...)
+RECOMP_CORE_DEFINITION int rc_fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...)
 {
   va_list va;
   va_start(va, format);

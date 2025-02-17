@@ -23,7 +23,7 @@
 
 #include <string.h>
 
-RECOMP_STRING_DEFINITION char* rc_strncat(char* __restrict dst, const char* __restrict src, size_t maxlen)
+RECOMP_CORE_DEFINITION char* rc_strncat(char* __restrict dst, const char* __restrict src, size_t maxlen)
 {
 	const size_t dstlen = rc_strlen(dst);
 	const size_t srclen = rc_strnlen(src, maxlen);

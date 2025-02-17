@@ -50,7 +50,7 @@ extern "C" {
  * \return The number of characters that are written into the array, not counting the terminating null character
  */
 #define printf rc_printf
-RECOMP_PRINTF_DECLARATION(int rc_printf(const char* format, ...));
+RECOMP_CORE_DECLARATION(int rc_printf(const char* format, ...));
 
 
 /**
@@ -61,7 +61,7 @@ RECOMP_PRINTF_DECLARATION(int rc_printf(const char* format, ...));
  * \return The number of characters that are WRITTEN into the buffer, not counting the terminating null character
  */
 #define sprintf rc_sprintf
-RECOMP_PRINTF_DECLARATION(int rc_sprintf(char* buffer, const char* format, ...));
+RECOMP_CORE_DECLARATION(int rc_sprintf(char* buffer, const char* format, ...));
 
 
 /**
@@ -75,8 +75,8 @@ RECOMP_PRINTF_DECLARATION(int rc_sprintf(char* buffer, const char* format, ...))
  */
 #define snprintf  rc_snprintf
 #define vsnprintf rc_vsnprintf
-RECOMP_PRINTF_DECLARATION(int  rc_snprintf(char* buffer, size_t count, const char* format, ...));
-RECOMP_PRINTF_DECLARATION(int rc_vsnprintf(char* buffer, size_t count, const char* format, va_list va));
+RECOMP_CORE_DECLARATION(int  rc_snprintf(char* buffer, size_t count, const char* format, ...));
+RECOMP_CORE_DECLARATION(int rc_vsnprintf(char* buffer, size_t count, const char* format, va_list va));
 
 
 /**
@@ -86,7 +86,7 @@ RECOMP_PRINTF_DECLARATION(int rc_vsnprintf(char* buffer, size_t count, const cha
  * \return The number of characters that are WRITTEN into the buffer, not counting the terminating null character
  */
 #define vprintf rc_vprintf
-RECOMP_PRINTF_DECLARATION(int rc_vprintf(const char* format, va_list va));
+RECOMP_CORE_DECLARATION(int rc_vprintf(const char* format, va_list va));
 
 
 /**
@@ -97,7 +97,7 @@ RECOMP_PRINTF_DECLARATION(int rc_vprintf(const char* format, va_list va));
  * \param format A string that specifies the format of the output
  * \return The number of characters that are sent to the output function, not counting the terminating null character
  */
-RECOMP_PRINTF_DECLARATION(int rc_fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...));
+RECOMP_CORE_DECLARATION(int rc_fctprintf(void (*out)(char character, void* arg), void* arg, const char* format, ...));
 
 
 #ifdef __cplusplus

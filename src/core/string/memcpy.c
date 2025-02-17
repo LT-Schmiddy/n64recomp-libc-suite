@@ -46,7 +46,7 @@ typedef int word; /* "word" used for optimal copy speed */
  * This is the routine that actually implements
  * (the portable versions of) bcopy, rc_memcpy, and rc_memmove.
  */
-RECOMP_STRING_DEFINITION void* rc_memcpy(void* dst0, const void* src0, size_t length)
+RECOMP_CORE_DEFINITION void* rc_memcpy(void* dst0, const void* src0, size_t length)
 {
 	char* dst = dst0;
 	const char* src = src0;

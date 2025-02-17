@@ -17,7 +17,7 @@ extern "C" {
 #define static_assert _Static_assert
 #endif
 
-RECOMP_ASSERT_DECLARATION(void __assert_fail(const char* expr, const char* file, unsigned int line,
+RECOMP_CORE_DECLARATION(void __assert_fail(const char* expr, const char* file, unsigned int line,
 											 const char* function));
 
 #ifdef __cplusplus

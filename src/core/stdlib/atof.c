@@ -8,7 +8,7 @@
 
 #define isdigit(c) (c >= '0' && c <= '9')
 
-RECOMP_STDLIB_DEFINITION double rc_atof(const char *s)
+RECOMP_CORE_DEFINITION double rc_atof(const char *s)
 {
   // This function stolen from either Rolf Neugebauer or Andrew Tolmach. 
   // Probably Rolf.

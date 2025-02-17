@@ -26,7 +26,7 @@
 
 #include <stdlib.h>
 
-RECOMP_STDLIB_DEFINITION long long rc_llabs(long long j)
+RECOMP_CORE_DEFINITION long long rc_llabs(long long j)
 {
 	return (j < 0 ? -j : j);
 }

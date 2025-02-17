@@ -8,7 +8,7 @@
  */
 #define MUL_NO_OVERFLOW (1UL << (sizeof(size_t) * 4))
 
-RECOMP_STDLIB_DEFINITION void* rc_calloc(size_t num, size_t size)
+RECOMP_CORE_DEFINITION void* rc_calloc(size_t num, size_t size)
 {
 	/* num * size unsigned integer wrapping check */
 	if((num >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW) && num > 0 && SIZE_MAX / num < size)

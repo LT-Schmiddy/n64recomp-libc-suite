@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 
-RECOMP_STRING_DEFINITION void* __attribute__((weak)) rc_memset(void* dest, int c, size_t n)
+RECOMP_CORE_DEFINITION void* __attribute__((weak)) rc_memset(void* dest, int c, size_t n)
 {
 	unsigned char* s = dest;
 	size_t k;

@@ -2,7 +2,7 @@
 
 #include <ctype.h>
 
-RECOMP_CTYPE_DEFINITION int rc_isprint(int c)
+RECOMP_CORE_DEFINITION int rc_isprint(int c)
 {
 	return (unsigned)c - 0x20 < 0x5f;
 }

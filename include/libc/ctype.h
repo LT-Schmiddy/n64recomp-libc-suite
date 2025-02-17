@@ -43,7 +43,7 @@ extern "C" {
  * @param ch The character to classify
  * @return Non-zero value if the character is an alphanumeric character, 0 otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isalnum(int ch));
+RECOMP_CORE_DECLARATION(int rc_isalnum(int ch));
 
 /**
  * @brief Checks if the given character is an alphabetic character.
@@ -57,7 +57,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isalnum(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is an alphabetic character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isalpha(int ch));
+RECOMP_CORE_DECLARATION(int rc_isalpha(int ch));
 
 /**
  * @brief Checks if a given character is  a 7-bit US-ASCII character.
@@ -71,7 +71,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isalpha(int ch));
  * @param ch The character to classify
  * @return Non-zero value if ch is a 7-bit US-ASCII character code, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isascii(int ch));
+RECOMP_CORE_DECLARATION(int rc_isascii(int ch));
 
 /**
  * @brief Checks if the given character is a blank character.
@@ -87,7 +87,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isascii(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is a blank character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isblank(int ch));
+RECOMP_CORE_DECLARATION(int rc_isblank(int ch));
 
 /**
  * @brief Checks if the given character is a control character.
@@ -102,7 +102,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isblank(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is a control character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_iscntrl(int ch));
+RECOMP_CORE_DECLARATION(int rc_iscntrl(int ch));
 
 /**
  * @brief Checks if the given character is a numeric character.
@@ -115,7 +115,7 @@ RECOMP_CTYPE_DECLARATION(int rc_iscntrl(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is a numeric character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isdigit(int ch));
+RECOMP_CORE_DECLARATION(int rc_isdigit(int ch));
 
 /**
  * @brief Checks if the given character has a graphical representation.
@@ -133,7 +133,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isdigit(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character has a graphical representation character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isgraph(int ch));
+RECOMP_CORE_DECLARATION(int rc_isgraph(int ch));
 
 /**
  * @brief Checks if the given character is classified as a lowercase character.
@@ -149,7 +149,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isgraph(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is a lowercase letter, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_islower(int ch));
+RECOMP_CORE_DECLARATION(int rc_islower(int ch));
 
 /**
  * @brief Checks if the given character can be printed.
@@ -168,7 +168,7 @@ RECOMP_CTYPE_DECLARATION(int rc_islower(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character can be printed, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isprint(int ch));
+RECOMP_CORE_DECLARATION(int rc_isprint(int ch));
 
 /**
  * @brief Checks if the given character is a punctuation character.
@@ -183,7 +183,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isprint(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is a punctuation character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_ispunct(int ch));
+RECOMP_CORE_DECLARATION(int rc_ispunct(int ch));
 
 /**
  * @brief Checks if the given character is a whitespace character.
@@ -203,7 +203,7 @@ RECOMP_CTYPE_DECLARATION(int rc_ispunct(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is a whitespace character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isspace(int ch));
+RECOMP_CORE_DECLARATION(int rc_isspace(int ch));
 
 /**
  * @brief Checks if the given character is an uppercase character
@@ -219,7 +219,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isspace(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is an uppercase letter, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isupper(int ch));
+RECOMP_CORE_DECLARATION(int rc_isupper(int ch));
 
 /**
  * @brief Checks if the given character is a hexadecimal numeric character.
@@ -232,7 +232,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isupper(int ch));
  * @param ch The character to classify
  * @return Non-zero value if the character is an hexadecimal numeric character, zero otherwise.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_isxdigit(int ch));
+RECOMP_CORE_DECLARATION(int rc_isxdigit(int ch));
 
 /**
  * @brief Converts the given character to lowercase.
@@ -249,7 +249,7 @@ RECOMP_CTYPE_DECLARATION(int rc_isxdigit(int ch));
  * @return Lowercase version of ch or unmodified ch if no lowercase version is listed in the default
  * locale.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_tolower(int ch));
+RECOMP_CORE_DECLARATION(int rc_tolower(int ch));
 
 /**
  * @brief Converts the given character to lowercase.
@@ -266,7 +266,7 @@ RECOMP_CTYPE_DECLARATION(int rc_tolower(int ch));
  * @return Uppercase version of ch or unmodified ch if no uppercase version is listed in the default
  * locale.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_toupper(int ch));
+RECOMP_CORE_DECLARATION(int rc_toupper(int ch));
 
 /**
  * @brief Converts the given character to ASCII.
@@ -278,7 +278,7 @@ RECOMP_CTYPE_DECLARATION(int rc_toupper(int ch));
  * @return The value returned is that of the converted letter, or ch if the conversion was not
  * possible.
  * */
-RECOMP_CTYPE_DECLARATION(int rc_toascii(int ch));
+RECOMP_CORE_DECLARATION(int rc_toascii(int ch));
 
 #ifdef __cplusplus
 }

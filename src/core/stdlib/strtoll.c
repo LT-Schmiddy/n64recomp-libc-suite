@@ -40,7 +40,7 @@
  * Ignores `locale' stuff.  Assumes that the upper and lower case
  * alphabets and digits are each contiguous.
  */
-RECOMP_STDLIB_DEFINITION long long int rc_strtoll(const char* nptr, char** endptr, int base)
+RECOMP_CORE_DEFINITION long long int rc_strtoll(const char* nptr, char** endptr, int base)
 {
 	const char* s;
 	/* LONGLONG */

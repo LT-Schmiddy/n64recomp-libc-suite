@@ -35,7 +35,7 @@
 
 #include <string.h>
 
-RECOMP_STRING_DEFINITION char* rc_strstr(const char* string, const char* substring)
+RECOMP_CORE_DEFINITION char* rc_strstr(const char* string, const char* substring)
 {
 	const char* a;
 	const char* b;

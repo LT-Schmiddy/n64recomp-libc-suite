@@ -38,7 +38,7 @@ __FBSDID("$FreeBSD: src/lib/libc/string/strndup.c,v 1.1 2008/12/06 09:37:54 kib 
 #include <stdlib.h>
 #include <string.h>
 
-RECOMP_STRING_DEFINITION char* rc_strndup(const char* str, size_t n)
+RECOMP_CORE_DEFINITION char* rc_strndup(const char* str, size_t n)
 {
 	char* copy = NULL;
 

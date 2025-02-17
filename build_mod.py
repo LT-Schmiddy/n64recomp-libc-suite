@@ -3,7 +3,7 @@ from pathlib import Path
 import build_n64recomp_tools as bnt
 import build_submodule_toml_gen as bstg
 
-BUILD_DIR_NAME = "build"
+
 OUT_DIR_NAME = "out"
 RUNTIME_DIR_NAME = "runtime"
 
@@ -62,7 +62,7 @@ class ModBuilder:
             build_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['build_dir']).resolve()
         else:
             # DEFAULT
-            build_dir = self.project_root.joinpath(f"{BUILD_DIR_NAME}/{submodule}")
+            build_dir = self.project_root.joinpath(f"{bstg.BUILD_ROOT_NAME}/{submodule}")
         
         if "output_dir" in mod_data['N64Recomp_libc']:
             output_dir = toml_path.parent.joinpath(mod_data['N64Recomp_libc']['output_dir']).resolve()
@@ -111,13 +111,13 @@ class ModBuilder:
                 
 
 if __name__ == '__main__':
-    proot = Path(__file__).parent
+    proot = Path(__file__).parent.absolute()
     
     builder = ModBuilder(proot)
-    builder.run_build(["combined.toml"])
+    # builder.run_build(["core.toml"])
     
     # Regenerating TOML Files:
-    subgen = bstg.SubmoduleGenerator(proot, proot.joinpath(bstg.TOML_DIR_NAME))
+    subgen = bstg.SubmoduleGenerator(proot, proot.joinpath(bstg.BUILD_ROOT_NAME), proot.joinpath(bstg.TOML_DIR_NAME))
     submodule_config = json.loads(proot.joinpath(bstg.SUBMODULE_CONFIG_NAME).read_text())
     tomls = subgen.generate_from_config_dict(submodule_config)
     

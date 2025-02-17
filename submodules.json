@@ -1,12 +1,24 @@
 {
     "version":"1.0.0",
-    "all_game_ids": [
-        "mm"
-    ],
+    "all_game_ids": {
+        "mm": {
+            "func_syms": "./Zelda64RecompSyms/mm.us.rev1.syms.toml",
+            "data_syms": [ 
+                "./Zelda64RecompSyms/mm.us.rev1.datasyms.toml", 
+                "./Zelda64RecompSyms/mm.us.rev1.datasyms_static.toml"
+            ]
+        }
+    },  
     "submodules": {
+        "core": {
+            "makefile": "Makefile",
+            "template": "mm_core"
+        },
         "tests": {
+            "makefile": "Makefile_extra",
+            "template": "mm_extra",
             "dependencies": [
-                "combined"
+                "core"
             ]
         }
     }

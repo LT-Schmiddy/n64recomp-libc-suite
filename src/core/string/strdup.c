@@ -39,7 +39,7 @@ __FBSDID("$FreeBSD: src/lib/libc/string/strdup.c,v 1.6 2009/02/03 17:58:20 dange
 #include <stdlib.h>
 #include <string.h>
 
-RECOMP_STRING_DEFINITION char* rc_strdup(const char* str)
+RECOMP_CORE_DEFINITION char* rc_strdup(const char* str)
 {
 	char* copy = NULL;
 

@@ -29,7 +29,7 @@
 
 #include <stdlib.h>
 
-RECOMP_STDLIB_DEFINITION int rc_abs(int j)
+RECOMP_CORE_DEFINITION int rc_abs(int j)
 {
 	return (j < 0 ? -j : j);
 }

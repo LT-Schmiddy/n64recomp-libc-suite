@@ -27,7 +27,7 @@
 #include <stdlib.h>
 
 /* See comments in div.c for implementation details. */
-RECOMP_STDLIB_DEFINITION lldiv_t rc_lldiv(long long numer, long long denom)
+RECOMP_CORE_DEFINITION lldiv_t rc_lldiv(long long numer, long long denom)
 {
 	lldiv_t retval;
 

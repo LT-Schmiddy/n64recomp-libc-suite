@@ -33,7 +33,7 @@
 /*
  * Find Last Set bit
  */
-RECOMP_SUPPORT_DEFINITION int flsl(long mask)
+RECOMP_CORE_DEFINITION int flsl(long mask)
 {
 #if __has_builtin(__builtin_flsl)
 	return __builtin_flsl(mask);
@@ -63,7 +63,7 @@ RECOMP_SUPPORT_DEFINITION int flsl(long mask)
 
 #else // not __clang__
 
-RECOMP_SUPPORT_DEFINITION int flsl(long mask)
+RECOMP_CORE_DEFINITION int flsl(long mask)
 {
 	if(mask == 0)
 	{
