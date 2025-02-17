@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include <recomp_libc.h>
+
 #define NL_SETD 1
 #define NL_CAT_LOCALE 1
 

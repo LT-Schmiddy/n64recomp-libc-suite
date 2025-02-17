@@ -18,7 +18,7 @@ extern "C" {
 /// section below are currently safe for bare metal
 
 #pragma mark - Definitions -
-
+#ifndef DISABLE_UNIMPLEMENTED_LIBC_APIS
 #undef EOF
 #define EOF (-1)
 
@@ -79,8 +79,6 @@ int vasprintf(char**, const char*, __isoc_va_list);
 #endif
 
 #pragma mark - Unsupported Functions -
-
-#ifndef DISABLE_UNIMPLEMENTED_LIBC_APIS
 
 int fseek(FILE*, long, int);
 long ftell(FILE*);

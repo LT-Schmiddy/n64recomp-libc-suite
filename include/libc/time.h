@@ -1,7 +1,8 @@
 #ifndef _TIME_H_
 #define _TIME_H_
 
-#include <_types/_time_t.h>
+#include <recomp_libc.h>
+// #include <_types/_time_t.h>
 #include <stddef.h>
 
 #ifdef __cplusplus
@@ -9,7 +10,7 @@ extern "C" {
 #endif
 
 #pragma mark - Types and Definitions -
-
+#ifndef DISABLE_UNIMPLEMENTED_LIBC_APIS
 #define CLOCKS_PER_SEC 1000000L
 
 #define TIME_UTC 1
@@ -18,6 +19,11 @@ extern "C" {
 #define __tm_gmtoff tm_gmtoff
 #define __tm_zone tm_zone
 #endif
+
+#pragma mark - Functions -
+
+char* asctime(const struct tm*);
+
 
 typedef int clockid_t;
 typedef void* timer_t;
@@ -83,11 +89,6 @@ struct itimerspec
 
 #endif
 
-#pragma mark - Functions -
-
-char* asctime(const struct tm*);
-
-#ifndef DISABLE_UNIMPLEMENTED_LIBC_APIS
 clock_t clock(void);
 time_t time(time_t*);
 double difftime(time_t, time_t);
