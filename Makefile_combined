@@ -17,25 +17,25 @@ CPPFLAGS := -nostdinc -D_LANGUAGE_C -DMIPS -DF3DEX_GBI_2 -DF3DEX_GBI_PL -DGBI_DO
 LDFLAGS  := -nostdlib -T $(LDSCRIPT) -Map $(BUILD_DIR)/mod.map --unresolved-symbols=ignore-all --emit-relocs -e 0 --no-nmagic -L lib -lgcc_vr4300
 
 C_SRCS := \
-	$(wildcard src/assert/*.c) \
-	$(wildcard src/ctype/*.c) \
-	$(wildcard src/printf/*.c) \
-	$(wildcard src/stdlib/*.c) \
-	$(wildcard src/string/*.c) \
-	$(wildcard src/support/*.c)
+	$(wildcard src/core/assert/*.c) \
+	$(wildcard src/core/ctype/*.c) \
+	$(wildcard src/core/printf/*.c) \
+	$(wildcard src/core/stdlib/*.c) \
+	$(wildcard src/core/string/*.c) \
+	$(wildcard src/core/support/*.c)
 
 C_OBJS := $(addprefix $(BUILD_DIR)/, $(C_SRCS:.c=.o))
 C_DEPS := $(addprefix $(BUILD_DIR)/, $(C_SRCS:.c=.d))
 
 OBJECT_DIRS := \
-	$(BUILD_DIR)/src/ \
-	$(BUILD_DIR)/src/$(SUBMODULE) \
-	$(BUILD_DIR)/src/assert \
-	$(BUILD_DIR)/src/ctype \
-	$(BUILD_DIR)/src/printf \
-	$(BUILD_DIR)/src/stdlib \
-	$(BUILD_DIR)/src/string \
-	$(BUILD_DIR)/src/support
+	$(BUILD_DIR)/src/core/ \
+	$(BUILD_DIR)/src/core/$(SUBMODULE) \
+	$(BUILD_DIR)/src/core/assert \
+	$(BUILD_DIR)/src/core/ctype \
+	$(BUILD_DIR)/src/core/printf \
+	$(BUILD_DIR)/src/core/stdlib \
+	$(BUILD_DIR)/src/core/string \
+	$(BUILD_DIR)/src/core/support
 
 $(TARGET): $(C_OBJS) $(LDSCRIPT) | $(BUILD_DIR)
 	$(LD) $(C_OBJS) $(LDFLAGS) -o $@

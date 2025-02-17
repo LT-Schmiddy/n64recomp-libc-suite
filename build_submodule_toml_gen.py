@@ -31,7 +31,7 @@ class SubmoduleGenerator:
             }
         }
     
-    def generate_toml(self, submodule_id: str, version: str, game_id: str, dependencies_str: str):
+    def generate_toml(self, submodule_id: str, version: str, game_id: str, dependencies_str: str, makefile: str = "Makefile"):
         return textwrap.dedent(f"""
         # Config file for an example Majora's Mask: Recompiled mod.
 
