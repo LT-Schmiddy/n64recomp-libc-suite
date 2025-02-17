@@ -33,7 +33,7 @@ int/*-
  * Find Last Set bit
  */
 #if defined(__clang__)
-RECOMP_CORE_DEFINITION int fls(int mask) {
+RECOMP_CORE_DEFINITION int rc_fls(int mask) {
 #if __has_builtin(__builtin_fls)
 	return __builtin_fls(mask);
 #elif __has_builtin(__builtin_clz)
@@ -62,7 +62,7 @@ RECOMP_CORE_DEFINITION int fls(int mask) {
 
 #else // Not clang
 
-RECOMP_CORE_DEFINITION int fls(int mask)
+RECOMP_CORE_DEFINITION int rc_fls(int mask)
 {
 	if(mask == 0)
 	{

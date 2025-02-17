@@ -107,9 +107,9 @@ static inline char* med3(char* a, char* b, char* c, cmp_t* cmp,
 }
 
 #ifdef __LP64__
-#define DEPTH(x) (2 * (flsl((long)(x)) - 1))
+#define DEPTH(x) (2 * (rc_flsl((long)(x)) - 1))
 #else /* !__LP64__ */
-#define DEPTH(x) (2 * (fls((int)(x)) - 1))
+#define DEPTH(x) (2 * (rc_fls((int)(x)) - 1))
 #endif /* __LP64__ */
 
 static void _qsort(void* a, size_t n, size_t es,

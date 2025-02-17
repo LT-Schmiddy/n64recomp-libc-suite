@@ -20,7 +20,7 @@ extern "C" {
  * @param mask The bit mask
  * @return The index of the bit if mask is not zero, 0 otherwise.
  * */
-RECOMP_CORE_DECLARATION(int fls(int mask));
+RECOMP_CORE_DECLARATION(int rc_fls(int mask));
 
 /**
  * @brief Finds the last (most significant) bit set in the given mask
@@ -33,7 +33,7 @@ RECOMP_CORE_DECLARATION(int fls(int mask));
  * @param mask The bit mask
  * @return The index of the bit if mask is not zero, 0 otherwise.
  * */
-RECOMP_CORE_DECLARATION(int flsl(long mask));
+RECOMP_CORE_DECLARATION(int rc_flsl(long mask));
 
 /**
  * @brief Finds the last (most significant) bit set in the given mask
@@ -46,7 +46,7 @@ RECOMP_CORE_DECLARATION(int flsl(long mask));
  * @param mask The bit mask
  * @return The index of the bit if mask is not zero, 0 otherwise.
  * */
-RECOMP_CORE_DECLARATION(int flsll(long long mask));
+RECOMP_CORE_DECLARATION(int rc_flsll(long long mask));
 
 #ifdef __cplusplus
 }
