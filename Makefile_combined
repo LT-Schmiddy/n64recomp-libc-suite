@@ -22,8 +22,7 @@ C_SRCS := \
 	$(wildcard src/printf/*.c) \
 	$(wildcard src/stdlib/*.c) \
 	$(wildcard src/string/*.c) \
-	$(wildcard src/support/*.c) \
-	$(wildcard src/tests/*.c)
+	$(wildcard src/support/*.c)
 
 C_OBJS := $(addprefix $(BUILD_DIR)/, $(C_SRCS:.c=.o))
 C_DEPS := $(addprefix $(BUILD_DIR)/, $(C_SRCS:.c=.d))
@@ -36,8 +35,7 @@ OBJECT_DIRS := \
 	$(BUILD_DIR)/src/printf \
 	$(BUILD_DIR)/src/stdlib \
 	$(BUILD_DIR)/src/string \
-	$(BUILD_DIR)/src/support \
-	$(BUILD_DIR)/src/tests
+	$(BUILD_DIR)/src/support
 
 $(TARGET): $(C_OBJS) $(LDSCRIPT) | $(BUILD_DIR)
 	$(LD) $(C_OBJS) $(LDFLAGS) -o $@
