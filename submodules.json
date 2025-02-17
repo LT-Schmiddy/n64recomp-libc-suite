@@ -4,30 +4,9 @@
         "mm"
     ],
     "submodules": {
-        "assert": {},
-        "ctype": {},
-        "printf": {},
-        "string": { 
-            "dependencies": [
-                "assert",
-                "ctype",
-                "support",
-                "stdlib"
-            ]
-        },
-        "support": {},
-        "stdlib": {
-            "dependencies": [
-                "ctype",
-                "support"
-            ]
-        },
         "tests": {
             "dependencies": [
-                "ctype",
-                "printf",
-                "support",
-                "stdlib"
+                "combined"
             ]
         }
     }
